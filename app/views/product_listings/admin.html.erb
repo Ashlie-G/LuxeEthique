@@ -1,0 +1,41 @@
+<h1>Product Listings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Colour</th>
+      <th>Approved</th>
+      <th>Image</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_listings.each do |product_listing| %>
+      <tr>
+        <td><%= product_listing.name %></td>
+        <td><%= product_listing.brand %></td>
+        <td><%= product_listing.description %></td>
+        <td><%= product_listing.price %></td>
+        <td><%= product_listing.category %></td>
+        <td><%= product_listing.colour %></td>
+        <td><%= product_listing.approved %></td>
+        <td><%= cl_image_tag(product_listing.image.key, crop: :scale, width: 100, cloud_name: 'ashlii')%></td>
+        <td><%= product_listing.user_id %></td>
+        <td><%= link_to 'Show', product_listing %></td>
+        <% if current_user.has_role? :admin %>
+          <td><%= link_to 'Edit', edit_product_listing_path(product_listing) %></td>
+          <td><%= link_to 'Destroy', product_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

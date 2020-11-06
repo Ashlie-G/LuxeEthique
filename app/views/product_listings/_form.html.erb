@@ -10,7 +10,9 @@
     <%= f.input :price %>
     <%= f.input :category, collection: ["Shoulder Bag", "Tote", "Clutch"] %>
     <%= f.input :colour, collection: ["Black","Navy", "White", "Red", "Other"] %>
+    <% if current_user.has_role? :admin %>
     <%= f.input :approved %>
+    <%end%>
     <%= f.file_field :image %>
   </div>
 

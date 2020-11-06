@@ -2,13 +2,18 @@ class ProductListingsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  #before_action :check_user, only: [:restricted]
+  before_action :check_user, only: [:admin]
   
 
   # GET /product_listings
   # GET /product_listings.json
   def index
     @product_listings = ProductListing.all
+    #  if @product_listing.approve = "true"
+    #   render @product_listings
+    # #   everyone can see
+    #  end
+
   end
 
   # GET /product_listings/1
@@ -65,6 +70,10 @@ class ProductListingsController < ApplicationController
     end
   end
 
+  def admin
+    @product_listings = ProductListing.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product_listing
@@ -81,5 +90,5 @@ class ProductListingsController < ApplicationController
         flash[:alert] = "You are not authorized to access that page"
         redirect_to root_path
       end
-  end
+    end
 end
