@@ -10,17 +10,53 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
                 required: true,
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "new-password" } %>          
+  </div>
+  <div>
+    <%= f.fields_for :user_details do |form| %>
+      <%= form.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "first name" }%>
+      <%= form.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "last name" }%>
+      <%= form.input :address_line_1,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "address line 1" }%>
+      <%= form.input :address_line_2,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "address line 2" }%>
+      <%= form.input :suburb,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "Suburb" }%>
+      <%= form.input :state,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "State" }%>
+      <%= form.input :postcode,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "Postcode" }%>
+    <% end %>
   </div>
 
   <div class="form-actions">

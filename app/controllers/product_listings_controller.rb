@@ -73,6 +73,13 @@ class ProductListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_listing_params
-      params.require(:product_listing).permit(:name, :brand, :description, :price, :category, :colour, :approved, :user_id)
+      params.require(:product_listing).permit(:name, :brand, :description, :price, :category, :colour, :approved, :image, :user_id)
     end
+
+    def check_user
+      if (user_signed_in? && !current_user.has_role?(:admin))
+        flash[:alert] = "You are not authorized to access that page"
+        redirect_to root_path
+      end
+  end
 end

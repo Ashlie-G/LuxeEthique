@@ -59,3 +59,8 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 gem 'devise'
+
+gem "cloudinary", "~> 1.18"
+gem "activestorage-cloudinary-service", "~> 0.2.3"
+
+gem "dotenv", "~> 2.7"

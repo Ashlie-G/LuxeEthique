@@ -1,44 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="card" style="width: 18rem;">
+    <p><%= cl_image_tag(@product_listing.image.key, crop: :scale, width: 285, cloud_name: 'ashlii')%></p>
+      <div class="card-body">
+        <h5 class="card-title">
+          <p>
+            <strong>Name:</strong>
+            <%= @product_listing.name %>
+          </p>
+          <p>
+            <strong>Brand:</strong>
+            <%= @product_listing.brand %>
+          </p></h5>
+        <p class="card-text">
+          <p>
+            <strong>Description:</strong>
+            <%= @product_listing.description %>
+          </p>
+          <p>
+            <strong>Price:</strong>
+            $<%= @product_listing.price %>
+          </p>
+          
+          <p>
+            <strong>Category:</strong>
+            <%= @product_listing.category %>
+          </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product_listing.name %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @product_listing.brand %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product_listing.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product_listing.price %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product_listing.category %>
-</p>
-
-<p>
-  <strong>Colour:</strong>
-  <%= @product_listing.colour %>
-</p>
-
-<p>
-  <strong>Approved:</strong>
-  <%= @product_listing.approved %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @product_listing.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_product_listing_path(@product_listing) %> |
+          <p>
+            <strong>Colour:</strong>
+            <%= @product_listing.colour %>
+          </p>
+          
+      </div>
+      
+<% if current_user.id == @product_listing.user_id %>
+  <%= link_to 'Edit', edit_product_listing_path(@product_listing) %>
+<%end%>
 <%= link_to 'Back', product_listings_path %>
