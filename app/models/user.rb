@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   has_one :user_detail
   has_one :state, through: :user_detail
   has_one :postcode, through: :user_detail
