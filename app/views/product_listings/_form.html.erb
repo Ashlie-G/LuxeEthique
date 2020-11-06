@@ -13,9 +13,12 @@
     <% if current_user.has_role? :admin %>
     <%= f.input :approved %>
     <%end%>
+    <p>Please upload multiple images including authenticity tags</p>
     <%= f.file_field :image %>
   </div>
-
+<p>Please note submissions may take up to 2 working days to be processed.
+  You will be contacted in the event of issue.
+</p>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

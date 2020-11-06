@@ -1,7 +1,7 @@
 class ProductListingsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :check_user, only: [:admin]
   
 

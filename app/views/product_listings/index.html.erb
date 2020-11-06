@@ -2,15 +2,13 @@
 
 <h1>Wardrobe</h1>
 
-
 <% @product_listings.each do |product_listing| %>
-  <% if product_listing.approved == true  %>
-    <div class="row">
-      <div class="card" style="width: 18rem;">
-        <p><%= cl_image_tag(product_listing.image.key, crop: :scale, width: 285, cloud_name: 'ashlii')%></p>
-          <div class="card-body">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <% if product_listing.approved == true  %>
+          <%= cl_image_tag(product_listing.image.key, crop: :scale, width: 280, cloud_name: 'ashlii')%>
             <h5 class="card-title">
-              <p>
+              <p></p>
                 <strong>Name:</strong>
                 <%= product_listing.name %>
               </p>
@@ -37,10 +35,13 @@
                 <strong>Colour:</strong>
                 <%= product_listing.colour %>
               </p>
-          
-          </div>
-  <%end%>
+          <%end%>
+          <%= link_to "Buy", '/', class:"btn btn-primary btn-lg" %>   
+
+    </div>
+  </div>
 <%end%>
+
 
 
 <%= link_to 'New Product Listing', new_product_listing_path %>

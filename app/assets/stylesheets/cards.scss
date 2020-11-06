@@ -1,24 +1,13 @@
-.card {
-	background: #fff;
-	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-	img {
-		width: 100%;
-	}
+
+.card-body {
+    padding: 0.5em;
 }
 
-[class*="row"] {
-	margin-bottom: 1em;
-  justify-content: center;
+img{
+    padding-right: 0.7em;
 }
 
-[class*="col-"] {
-	background: #efefef;
-	border: 1px solid #ddd;
-	padding-top: .75rem;
-	padding-bottom: .75rem;
-	width: 100%;
+.card{
+    margin: 0;
 }
-// ref codepen https://codepen.io/starise/pen/ZbYPRq
-
-
 
