@@ -26,6 +26,7 @@ class ProductListingsController < ApplicationController
   # GET /product_listings/new
   def new
     @product_listing = ProductListing.new
+  
   end
 
   # GET /product_listings/1/edit
