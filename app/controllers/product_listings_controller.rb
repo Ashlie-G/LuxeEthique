@@ -1,4 +1,5 @@
 class ProductListingsController < ApplicationController
+  load_and_authorize_resource
   skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
@@ -19,6 +20,7 @@ class ProductListingsController < ApplicationController
   # GET /product_listings/1
   # GET /product_listings/1.json
   def show
+    
   end
 
   # GET /product_listings/new
@@ -73,6 +75,8 @@ class ProductListingsController < ApplicationController
   def admin
     @product_listings = ProductListing.all
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

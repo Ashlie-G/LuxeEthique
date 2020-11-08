@@ -66,3 +66,4 @@ gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "dotenv", "~> 2.7"
 
 gem "rolify", "~> 5.3"
+gem 'cancancan'

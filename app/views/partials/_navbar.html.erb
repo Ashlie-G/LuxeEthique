@@ -6,12 +6,14 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link active" href="/pages/about">About <span class="sr-only">(current)</span></a>
 
+        
         <% if user_signed_in? %>
+        <%= link_to "Profile", profile_path, method: :get, class: "nav-link" %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
           <%= link_to "Admin", admin_path, method: :get, class: "nav-link" %>
-            <% else %>
+        <% else %>
             <%= link_to "Sign In", user_session_path, method: :create, class: "nav-link" %>
             <%= link_to "Sign Up", href="/users/sign_up", class: "nav-link" %>
         <%end%>
