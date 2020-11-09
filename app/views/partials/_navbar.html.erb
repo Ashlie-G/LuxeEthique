@@ -13,6 +13,8 @@
         <%= link_to "Profile", profile_path, method: :get, class: "nav-link" %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
           <%= link_to "Admin", admin_path, method: :get, class: "nav-link" %>
+          <%= link_to "Cart", cart_path, method: :get, class: "nav-link", id: "cart" %>
+
         <% else %>
             <%= link_to "Sign In", user_session_path, method: :create, class: "nav-link" %>
             <%= link_to "Sign Up", href="/users/sign_up", class: "nav-link" %>
