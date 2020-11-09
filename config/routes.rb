@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'product_listings#admin', as: 'admin'
   get '/pages/profile', to: 'pages#profile', as: 'profile'
   get 'pages/about', to: 'pages#about', as: 'about'
+  get 'pages/contact', to: 'pages#contact', as: 'contact'
   root 'pages#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
