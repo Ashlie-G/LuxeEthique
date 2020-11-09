@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :order_items
+  get 'cart', to: 'cart#show'
+  get 'order_items/create'
+  get 'order_items/update'
+  get 'order_items/destroy'
+  get 'cart/show'
   resources :product_listings
   devise_for :users
   get 'pages/index'

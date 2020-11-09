@@ -10,6 +10,7 @@ class ProductListingsController < ApplicationController
   # GET /product_listings.json
   def index
     @product_listings = ProductListing.all
+   
     #  if @product_listing.approve = "true"
     #   render @product_listings
     # #   everyone can see
@@ -20,7 +21,7 @@ class ProductListingsController < ApplicationController
   # GET /product_listings/1
   # GET /product_listings/1.json
   def show
-    
+    @order_item = current_order.order_items.new
   end
 
   # GET /product_listings/new
