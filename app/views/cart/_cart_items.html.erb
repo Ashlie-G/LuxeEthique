@@ -5,9 +5,11 @@
     <%= f.hidden_field :product_listing_id, value: item.product_listing.id %>
     <%= f.number_field :quantity, value: item.quantity.to_i %>
     <%= f.submit "Update Cart" %>
-    <%= link_to "remove Items", item, method: :delete, remote: true %>
+    <%= link_to "Remove Item", item, method: :delete, remote: true %>
 <% end %>
 <h2>Subtotal: <%= item.total %></h2>
 <% end %>
 
-<h3>Your current order has a total of: <%= current_order.subtotal %></h3>
+    <h3>Your current order has a total of: $<%= current_order.subtotal %></h3>
+
+ <h3>You haven't added anything to your cart yet!</h3>

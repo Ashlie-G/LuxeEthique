@@ -22,6 +22,10 @@ class ProductListingsController < ApplicationController
   # GET /product_listings/1.json
   def show
     @order_item = current_order.order_items.new
+    if @order_item.save
+      format.html { redirect_to @order_item, notice: 'Product listing was successfully created.' }
+      
+    end
   end
 
   # GET /product_listings/new
