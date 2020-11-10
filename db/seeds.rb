@@ -11,3 +11,27 @@ user = User.create!(email: 'admin@example.com',
     password_confirmation: 'password')
 
 user.add_role :admin
+
+ProductListing.create!([
+    {
+        name: "Pochette Metis", 
+        brand: "Louis Vuitton", 
+        description: "Perfect condition", 
+        price: 2000.0, 
+        category: "Shoulder Bag", 
+        colour: "Other", 
+        approved: true, 
+        user_id: 2
+    },
+    name: "Marmont Mini", 
+    brand: "Chanel", 
+    description: "Perfect condition", 
+    price: 1900.0, 
+    category: "Shoulder Bag", 
+    colour: "Black", 
+    approved: false, 
+    user_id: 1
+})
+
+
+
