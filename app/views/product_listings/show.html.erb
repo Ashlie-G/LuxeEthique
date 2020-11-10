@@ -36,8 +36,8 @@
           </p>
           <%= form_with model: @order_item do |f| %>
           <%= f.hidden_field :product_listing_id, value: @product_listing.id %>
-          <%= f.number_field :quantity, value: 1, max: 1 %>
-          <%= f.submit "Add to cart" %>
+          <%= f.number_field :quantity, value: 1, min: 0, max: 1 %>
+          <%= f.submit "Add to cart", class: "nav-link" %>
           <% end %> 
           <%= link_to "View Cart", cart_path, method: :get, class: "nav-link" %>
           
