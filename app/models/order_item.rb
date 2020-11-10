@@ -11,7 +11,7 @@ class OrderItem < ApplicationRecord
       product_listing.price
     end
   end
-
+#gets the total
   def total
     return unit_price * quantity
   end

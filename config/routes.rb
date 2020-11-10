@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'order_items/destroy'
   get 'cart/show'
   resources :product_listings
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
   get 'pages/index'
   get '/admin', to: 'product_listings#admin', as: 'admin'
   get '/pages/profile', to: 'pages#profile', as: 'profile'

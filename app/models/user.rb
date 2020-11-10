@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   rolify
   has_one :user_detail
-  has_one :state, through: :user_detail
-  has_one :postcode, through: :user_detail
   has_many :product_listings
   accepts_nested_attributes_for :user_detail
   # Include default devise modules. Others available are:

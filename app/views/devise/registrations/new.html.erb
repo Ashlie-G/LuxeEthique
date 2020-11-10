@@ -17,7 +17,7 @@
                 input_html: { autocomplete: "new-password" } %>          
   </div>
   <div>
-    <%= f.fields_for :user_detail, UserDetail.new do |form| %>
+    <%= f.fields_for :user_details do |form| %>
       <%= form.input :first_name,
                     required: true,
                     autofocus: true,
@@ -41,20 +41,17 @@
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "Suburb" }%>
-          <%= f.fields_for :state do |form| %>
-              <%= form.input :state, collection: ["QLD", "NSW", "VIC", "NT", "SA", "WA", "ACT"],
+      <%= form.input :state, collection: ["QLD", "NSW", "VIC", "NT", "SA", "WA", "ACT"],
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "State" }%>
-                <%= f.fields_for :postcode do |form| %>
-                    <%= form.input :postcode,
-                                    required: true,
-                                    autofocus: true,
-                                    input_html: { autocomplete: "Postcode" }%>
-                <% end %>
-                                    
-          <% end %>
+      <%= form.input :postcode,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "Postcode" }%>
+  
     <% end %>
+                                    
   </div>
 
   <div class="form-actions">
