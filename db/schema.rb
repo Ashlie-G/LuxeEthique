@@ -36,25 +36,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_023519) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer "quantity"
-    t.decimal "total"
-    t.decimal "unit_price"
-    t.bigint "product_listing_id", null: false
-    t.bigint "order_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_listing_id"], name: "index_order_items_on_product_listing_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal "subtotal"
-    t.decimal "total"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "postcodes", force: :cascade do |t|
     t.integer "postcode"
     t.bigint "user_detail_id", null: false
@@ -131,8 +112,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_023519) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "product_listings"
   add_foreign_key "postcodes", "user_details"
   add_foreign_key "product_listings", "users"
   add_foreign_key "states", "user_details"

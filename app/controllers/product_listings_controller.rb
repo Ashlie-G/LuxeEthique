@@ -1,7 +1,7 @@
 class ProductListingsController < ApplicationController
   load_and_authorize_resource
-  skip_before_action :verify_authenticity_token, only: [:create]
-  before_action :set_product_listing, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :buy]
+  before_action :set_product_listing, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!, except: [:index]
   before_action :check_user, only: [:admin]
   
@@ -21,11 +21,7 @@ class ProductListingsController < ApplicationController
   # GET /product_listings/1
   # GET /product_listings/1.json
   def show
-    @order_item = current_order.order_items.new
-    if @order_item.save
-      format.html { redirect_to @order_item, notice: 'Product listing was successfully created.' }
-      
-    end
+
   end
 
   # GET /product_listings/new
@@ -77,9 +73,36 @@ class ProductListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def buy
+    Stripe.api_key = ENV['STRIPE_API_KEY']
+    session = Stripe::Checkout::Session.create({
+      payment_method_types: ['card'],
+      mode: 'payment',
+      success_url: success_url(params[:id]),
+      cancel_url: cancel_url(params[:id]),
+      line_items: [
+        {
+          price_data: {
+            currency: 'aud',
+            product_data: {
+              name: @product_listing.name
+            },
+            unit_amount: (@product_listing.price.to_f * 100).to_i
+          },
+          quantity: 1
+        }
+      ]
 
-  def admin
-    @product_listings = ProductListing.all
+    })
+    render json: session
+  end
+
+  def success
+    render plain: 'Success!'
+  end
+
+  def cancel
+    render plain: "The transcation was cancelled!"
   end
 
 
