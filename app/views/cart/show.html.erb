@@ -4,5 +4,28 @@
 
 <hr>
 <h4>Stripe checkout here</h4>
+<div>
+<p><button id="buynow-button" class="btn btn-primary btn-lg">Buy</button></p> 
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    const stripe = Stripe('<%= ["pk_test_51HgT8YJbyxCSQYdE4l0MaYN82EuEjZP0DJVFh5mXTbuhRmfKGnMfuc4zGtRQRkmKqnmKg9qEnFVEn2HAGoXZyRjB00HoQriWDi"] %>')
+    const buyButton = document.getElementById("buynow-button")
+
+    buyButton.addEventListener('click', function(){
+        fetch('<%= buy_path(@order_items) %>', { 
+            method: 'POST'
+            })
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(session){
+                return stripe.redirectToCheckout ({ sessionId: session.id })
+            })
+    })
+</script>
 <%= link_to 'Back to Wardrobe', product_listings_path %>
+</div>
+
 

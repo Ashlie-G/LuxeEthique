@@ -1,12 +1,14 @@
 class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:profile]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :about]
   before_action :check_user, only: [:admin]
   def index
   end
 
   def profile
-    
+  end
+
+  def about
   end
 
   def admin

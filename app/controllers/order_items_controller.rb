@@ -17,6 +17,8 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     @order_items = current_order.order_items
   end
+
+  
   private
 
   def order_params
@@ -26,4 +28,5 @@ class OrderItemsController < ApplicationController
   def set_order
     @order = current_order
   end
+
 end
