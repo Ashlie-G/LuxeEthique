@@ -98,14 +98,12 @@ class ProductListingsController < ApplicationController
   end
 
   def success
-    render plain: 'Success!'
+    redirect_to success_url
   end
 
   def cancel
-    render plain: "The transcation was cancelled!"
+    redirect_to cancel_url
   end
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

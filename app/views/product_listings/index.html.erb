@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Wardrobe</h1>
-<div class="card" style="width: 18rem;">
+
+
   <% @product_listings.each do |product_listing| %>
-  
-    <div class="card-body">
+    
         <% if product_listing.approved == true  %>
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
           <%= cl_image_tag(product_listing.image.key, crop: :scale, width: 280, cloud_name: 'ashlii')%>
             <h5 class="card-title">
               <p></p>
@@ -32,12 +34,13 @@
                 <%= product_listing.colour %>
               </p>
           <%= link_to 'Show', product_listing, class: "btn btn-primary btn-lg" %>
-          
-          <%end%>
-    </div>
-  
+        </div>
+      </div>
+        <%end%>
+    
+      
   <%end%>
-</div>
+
 
 
 
