@@ -4,12 +4,15 @@ class ProductListingsController < ApplicationController
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!, except: [:index]
   before_action :check_user, only: [:admin]
+
+  PRODUCTLISTINGS_PER_PAGE = 6
   
 
   # GET /product_listings
   # GET /product_listings.json
   def index
-    @product_listings = ProductListing.all
+    @page = params.fetch(:page, 0).to_i
+    @product_listings = ProductListing.offset(@page * PRODUCTLISTINGS_PER_PAGE).limit(PRODUCTLISTINGS_PER_PAGE)
 
   end
 

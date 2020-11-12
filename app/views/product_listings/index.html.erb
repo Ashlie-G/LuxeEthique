@@ -41,8 +41,14 @@
     
       
   <%end%>
+
 </div>
 
+<div>
+  <%= link_to "Next Page", product_listings_path(page: @page + 1) %>
+  |
+  <%= link_to "Previous Page", product_listings_path(page: @page - 1) %>
 
+</div>
 
 <%= link_to 'New Product Listing', new_product_listing_path %>
