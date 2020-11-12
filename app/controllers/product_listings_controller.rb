@@ -5,7 +5,7 @@ class ProductListingsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :check_user, only: [:admin]
 
-  PRODUCTLISTINGS_PER_PAGE = 6
+  PRODUCTLISTINGS_PER_PAGE = 4
   
 
   # GET /product_listings
