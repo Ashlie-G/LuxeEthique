@@ -6,32 +6,44 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create!(email: 'admin@example.com',
+admin = User.create!(email: 'admin@example.com',
     password: 'password',
     password_confirmation: 'password')
 
-user.add_role :admin
+admin.add_role :admin
 
-ProductListing.create!([
-    {
+user = User.create!(email: 'test@test.com',
+    password: 'password',
+    password_confirmation: 'password',
+)
+
+
+ProductListing.destroy_all
+
+bag_1= ProductListing.new(
         name: "Pochette Metis", 
         brand: "Louis Vuitton", 
         description: "Perfect condition", 
         price: 2000.0, 
         category: "Shoulder Bag", 
         colour: "Other", 
-        approved: true, 
-        user_id: 2
-    },
+        approved: true,
+        user_id: 1)
+    bag_1.image.attach(io: File.open(File.join(Rails.root,'app/assets/images/pochette_metis.png')), filename: 'pochette_metis.png')
+    
+bag_2= ProductListing.new(
     name: "Marmont Mini", 
-    brand: "Chanel", 
+    brand: "Gucci", 
     description: "Perfect condition", 
     price: 1900.0, 
     category: "Shoulder Bag", 
-    colour: "Black", 
-    approved: false, 
-    user_id: 1
-})
+    colour: "Black",
+    approved: false,
+    user_id: 1)
+    bag_2.image.attach(io: File.open(File.join(Rails.root,'app/assets/images/marmont_mini.png')), filename: 'marmont_mini.png')
+
+
+
 
 
 

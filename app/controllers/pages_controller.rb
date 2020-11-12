@@ -7,6 +7,9 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @profile = current_user
+    @listing = current_user.product_listings
+    
   end
 
   def about
@@ -14,7 +17,8 @@ class PagesController < ApplicationController
 
   def admin
     @product_listings = ProductListing.all
-    @users = UserDetail.all
+    @user = User.all
+    @details = UserDetail.all
   end
 private
 def check_user

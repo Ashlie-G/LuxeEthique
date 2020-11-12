@@ -10,11 +10,6 @@ class ProductListingsController < ApplicationController
   # GET /product_listings.json
   def index
     @product_listings = ProductListing.all
-   
-    #  if @product_listing.approve = "true"
-    #   render @product_listings
-    # #   everyone can see
-    #  end
 
   end
 

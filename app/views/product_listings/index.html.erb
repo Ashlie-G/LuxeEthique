@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Wardrobe</h1>
+<h1 class="wardrobe">Wardrobe</h1>
 
-
+<div class="row">
   <% @product_listings.each do |product_listing| %>
     
         <% if product_listing.approved == true  %>
@@ -36,11 +36,12 @@
           <%= link_to 'Show', product_listing, class: "btn btn-primary btn-lg" %>
         </div>
       </div>
+
         <%end%>
     
       
   <%end%>
-
+</div>
 
 
 
