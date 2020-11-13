@@ -6,15 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = User.create!(email: ENV["ADMIN_EMAIL"]
-    password: ENV["ADMIN_PASSWORD"], 
-    password_confirmation: ENV["ADMIN_PASSWORD"])
+admin = User.create!(email: 'admin@example',
+    password: 'password',
+    password_confirmation: 'password', 
+    user_detail_attributes: { first_name: 'Test', last_name: 'Account', contact_number: 1111111111, address_line_1: '123', address_line_2: 'Wallaby Way', suburb: 'Brisbane', postcode: 4000 })
 admin.add_role :admin
 
 # userdetails = UserDetail.create!(first_name: 'Test', last_name: 'Account', contact_number: 412713128, address_line_1: '123', address_line_2: 'Wallaby Way', suburb: 'Brisbane', postcode: 4032)
-user = User.create!(email: ENV["USER_EMAIL"],
-    password: ENV["USER_PASSWORD"],
-    password_confirmation: ENV["USER_PASSWORD"])
+user = User.create!(email: 'test@test.com',
+    password: 'password',
+    password_confirmation: 'password', 
+    user_detail_attributes: { first_name: 'Test', last_name: 'Account', contact_number: 1111111111, address_line_1: '123', address_line_2: 'Wallaby Way', suburb: 'Brisbane', postcode: 4000 })
 
 
 
