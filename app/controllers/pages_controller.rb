@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:profile]
-  before_action :authenticate_user!, except: [:index, :about]
+  before_action :authenticate_user!, except: [:index, :about, :contact]
   before_action :check_user, only: [:admin]
   
   def index
@@ -20,6 +20,10 @@ class PagesController < ApplicationController
     @user = User.all
     @details = UserDetail.all
   end
+
+  def contact
+  end
+
 private
 def check_user
   if (user_signed_in? && !current_user.has_role?(:admin))

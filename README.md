@@ -75,19 +75,34 @@ An ERD for your app
 Explain the different high-level components (abstractions) in your app
 active record mvc
 postgresql
+
 ### R16 ###
 Detail any third party services that your app will use
-In terms of involvement from third party appliciations, Luxe Ethique utilizes Cloudify for image hosting, Stripe for payment systems and Heroku for deployment. 
+In terms of involvement from third party applications, Luxe Ethique utilizes Cloudify for image hosting, Stripe for payment systems and Heroku for deployment. 
 
 ### R17 ###
 Describe your projects models in terms of the relationships (active record associations) they have with each other
 The User model is the central model that has relationships to the other models within the application.
+User
+```has_one :user_detail, dependent: :destroy```
+```has_many :product_listings, dependent: :destroy```
+The UserDetail model contains all the details for each user, their name, address and contact number.
+UserDetail
+```belongs_to :user```
+The ProductListing model is responsible for the manage of each product listed by a user within the application.
+ProductListing
+```belongs_to :user```
+Rolify creates its own models based around the user model. It creates a role model that creates a joining table to user roles. It belongs to the resource that it was created off, in this case the User model.
+Role
+```has_and_belongs_to_many :users, :join_table => :users_roles```
 
 
 ### R18 ###
 Discuss the database relations to be implemented in your application
+
 ### R19 ###
 Provide your database schema design
+
 ### R20 ###
 Describe the way tasks are allocated and tracked in your project
 Trello was the tool used in order to plan, allocate and track tasks throughout the construction of Luxe Ethique. I worked off dividing tasks between three boards, To Do, Pending and Done. A label system was also implemented to determine the perceived difficulty of the task and if it was essential or optional.
