@@ -37,3 +37,9 @@ cloudinary:
   cloud_name: ashlii
   api_key: 773789823222688
   api_secret: AUA0xAVwALk3VsK1sPIxktqp4DA
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: ['CLOUDINARY_CLOUDNAME']
+  api_key: ['CLOUDINARY_APIKEY']
+  api_secret: ['CLOUDINARY_SECRET']
