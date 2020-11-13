@@ -73,7 +73,7 @@ class ProductListingsController < ApplicationController
   end
 
   def buy
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    Stripe.api_key = ENV['STRIPE_API_KEY']
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       mode: 'payment',

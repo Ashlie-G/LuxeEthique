@@ -27,6 +27,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   # def update
   #   super
+  #   @user_details.user = current_user
+  #   @user_details.update(configure_account_update_params)
+  #   @user_details.save
   # end
 
   # DELETE /resource
@@ -55,7 +58,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #  params.require(:user).permit(:email, :password, :password_confirmation, user_details: [:first_name, :last_name, :contact_number, :address_line_1, :address_line_2, :suburb, :state, :postcode])
+
+    # devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
   # The path used after sign up.

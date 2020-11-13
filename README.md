@@ -55,16 +55,20 @@ Deployment
 - Heroku
 
 ### R12 ###
-User stories for your app
-Users can read the about page to understand the functionality and purpose of the website.
-Users can create an account with email, password to have access to the site.
-Users can can create a profile with name address and phone number to attach their details to their account.
-Users can update their profile and view their current listings.
-Users can browse the wardrobe of luxury handbags for sale and purchase knowing it is an authentic product.
-Users can submit their authentic handbags that they wish to sell with images
-Users can edit their approved listings.
-Administrators can view and approve listing pending for sale
-Administrators can edit or destory any listing
+User stories for Luxe Ethique
+- Visitors to the application can view the 'Wardrobe' (current listings).
+- Visitors can view the 'About Us' page.
+- Visitors can view the 'Contact' page and submit and enquiry email.
+- If visitors would like to get more detail about a product, they will need to sign up to become a user.
+- Visitors are able to sign up with a form submitting their email, password, contact number and address.
+- Users can create a profile with name address and phone number to attach their details to their account.
+- Users can update their profile and view their current listings.
+- Users can browse the wardrobe of luxury handbags for sale and purchase knowing it is an authentic product.
+- Users can submit their authentic handbags that they wish to sell with images.
+- Users can edit their approved listings.
+- Administrators can view and approve listing pending for sale.
+- Administrators can edit or destroy any listing.
+- Administrators can view all current listings and all users.
 
 
 ### R13 ###
@@ -73,7 +77,7 @@ Wireframes for your app
 An ERD for your app
 ### R15 ###
 Explain the different high-level components (abstractions) in your app
-active record mvc
+active record - mvc
 postgresql
 
 ### R16 ###
@@ -151,7 +155,8 @@ Log
 - Friday 14th
     - move all private info to env
     - cloudianry and stripe now not functional since moving to env.
-    - complete more of readme.md 
+    - complete more of readme.md
+    - corrected seed file to set user details of admin and test user. 
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
 Link to trello

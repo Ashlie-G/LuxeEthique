@@ -9,7 +9,6 @@ class PagesController < ApplicationController
   def profile
     @profile = current_user
     @listing = current_user.product_listings
-    
   end
 
   def about

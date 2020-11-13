@@ -41,17 +41,17 @@
           
           <script>
               const stripe = Stripe('<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>')
-              const buyButton = document.getElementById("buynow-button")
+              const buyButton = document.getElementById('buynow-button')
           
               buyButton.addEventListener('click', function(){
                   fetch('<%= buy_path(@product_listing.id) %>', { 
                       method: 'POST'
                       })
-                      .then(function(response){
+                      .then(function(response) {
                           return response.json()
                       })
-                      .then(function(session){
-                          return stripe.redirectToCheckout ({ sessionId: session.id })
+                      .then(function(session) {
+                          return stripe.redirectToCheckout({ sessionId: session.id })
                       })
               })
           </script>
