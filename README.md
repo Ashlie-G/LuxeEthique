@@ -90,12 +90,14 @@ The User model is the central model that has relationships to the other models w
 User
 ```has_one :user_detail, dependent: :destroy```
 ```has_many :product_listings, dependent: :destroy```
+```accepts_nested_attributes_for :user_details```
 The UserDetail model contains all the details for each user, their name, address and contact number.
 UserDetail
 ```belongs_to :user```
 The ProductListing model is responsible for the manage of each product listed by a user within the application.
 ProductListing
 ```belongs_to :user```
+```has_one_attached :image```
 Rolify creates its own models based around the user model. It creates a role model that creates a joining table to user roles. It belongs to the resource that it was created off, in this case the User model.
 Role
 ```has_and_belongs_to_many :users, :join_table => :users_roles```
