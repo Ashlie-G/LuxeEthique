@@ -93,6 +93,50 @@ Describe the way tasks are allocated and tracked in your project
 Trello was the tool used in order to plan, allocate and track tasks throughout the construction of Luxe Ethique. I worked off dividing tasks between three boards, To Do, Pending and Done. A label system was also implemented to determine the perceived difficulty of the task and if it was essential or optional.
 At the beginning, everything was added as a task to the first board 'To Do'. Each task within the column was given designated labels and ideal due or completion dates. Once I started a task, it would be moved into the 'Pending" board. If i faced any difficulty or changed the plan, comments would be made within the card. Once completed, it was marked as done and then allocated to the 'Done' board. This process was repeated with each task. When new issues and tasks became apparent, they are added to the appropriate board.
 As this method has worked for me with past projects, it made the build process much easier. Trello gives a clear outline of what needs to be done, its level of importance and when it needs to be completed by.
+
+Log
+ - Wednesday 4th
+    - Came up with concept, developed pitch and sent to Glen, which was     approved.
+    - Started erd, develop stories and relationships between users and products.
+    - Put q's into readme.md
+- Thursday 5th
+    - Finalised base ERD, will need user, user details, state, postcode, product listing, order, order details. Rolify will implement role model so wont need to manually generate that.
+    - Compiled base list of user stories
+    - Gem list includes bootstrap, devise, rolify, active admin (hopefully), simple form, cloudinary and stripe.
+    - developed wireframes for landing page, admin platform and product listings.
+- Friday 6th
+    - created new rails app, setup postgresql database, set route route, started git repo and deployed to heroku.
+    - created pages controller for all base app pages (home, about, contact, profile)
+    - created user, userdetail, state, postcode and productlisting models with appropriate relationships to user.
+    - implemented devise to user model which set up registration processes.
+    - product listing was implemented with scaffolding, so product listing crud completed.
+    - implemented gems (cloudinary, simpleform, rolify)
+- Saturday 7th
+    - read documentation on active admin
+    - implement active admin into application in order to admin dashboard.
+    - started to complete base readme.md
+- Sunday 8th
+    - active admin plan not working out as needed, so came up with another plan to have admin dashboard within the pages controller and to use cancancan instead. Created admin action, view and restriction to other users.
+    - implemented cancancan 
+- Monday 9th
+    - Construct custom sign in form to obtain user details, state and postcode (nesting).
+    - Difficulty doing multiple nesting so deleted state and postcode models and added them as attirubtes to user detail model.
+    - Sign in form completed and registering new user details.
+- Tuesday 10th
+    - build order, order items models and cart controller.
+    - 'cart' functioning as desired. 
+- Wednesday 12th
+    - implement stripe to cart.
+    - this proved to waste too much time, the way i planned my cart did work with how i have used stripe previously, removed order and order items models and cart controller.
+    - implemented stripe to each item rather than cart (selection of items) 
+- Thursday 13th
+    - build user profile page, unable to edit details at this point in time, assuming same issue with nesting and custom devise forms.
+    - started about page, placeholder image and soe test about the application.
+    - limit product listings on wardrobe (shop) page, build without pagination gem. 
+- Friday 14th
+    - move all private info to env
+    - cloudianry and stripe now not functional since moving to env.
+    - complete more of readme.md 
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
 Link to trello
