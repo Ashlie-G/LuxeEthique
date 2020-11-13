@@ -71,8 +71,9 @@ class ProductListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def buy
-    Stripe.api_key = ENV['STRIPE_API_KEY']
+    Stripe.api_key = ENV["STRIPE_API_KEY"]
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -96,11 +97,11 @@ class ProductListingsController < ApplicationController
   end
 
   def success
-    redirect_to success_url
+    render plain: 'Success!'
   end
 
   def cancel
-    redirect_to cancel_url
+    render plain: 'Success!'
   end
 
   private
