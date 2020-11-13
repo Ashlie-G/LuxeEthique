@@ -23,11 +23,11 @@ https://github.com/Ashlie-G/LuxeEthique
 ## Description of your marketplace app ##
 
 #### Purpose ####
-The purpose of this app is to create an reputable two way marketplace that allows users to list or purchase authentic pre-loved luxury handbags.
+The purpose of this app is to create an reputable two way marketplace that allows users to list or purchase authentic pre-loved luxury handbags. It will provide a place for people to purchase ethically and not feel bad about wanting luxury items.
 
 #### Functionality / features ####
-Luxe Ethique enables any visitor to the application to view the current approved listings. If the user wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system.
-If the visitor is a user, they can sign into their account. A user can browse the current listings, add an item to their cart and purchase. If the listing belongs to the user, they will be able to edit or destroy the listing. Users can also create a new listing by completing the form and uploading images of the product as well as its authenticity. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
+Luxe Ethique enables any visitor to the application to view the current approved listings. If the user wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system that asks for email, password, contact number and address.
+If the visitor is a user, they can sign into their account with their email and password. A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to edit or destroy it. Users can also create a new listing by completing the form and uploading images of the product as well as its authenticity. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
 
 
 
