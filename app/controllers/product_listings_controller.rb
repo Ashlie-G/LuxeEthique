@@ -1,4 +1,5 @@
 class ProductListingsController < ApplicationController
+  #cancancan component that sets up before_filter which calls load_resource and authorize_resource
   load_and_authorize_resource
   skip_before_action :verify_authenticity_token, only: [:create, :buy]
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy, :buy]
@@ -10,6 +11,7 @@ class ProductListingsController < ApplicationController
 
   # GET /product_listings
   # GET /product_listings.json
+  #sets pagination(limits listings on each page) and shows current product listins
   def index
     @page = params.fetch(:page, 0).to_i
     @product_listings = ProductListing.offset(@page * PRODUCTLISTINGS_PER_PAGE).limit(PRODUCTLISTINGS_PER_PAGE)
@@ -23,6 +25,7 @@ class ProductListingsController < ApplicationController
   end
 
   # GET /product_listings/new
+  #creates new product listing
   def new
     @product_listing = ProductListing.new
   

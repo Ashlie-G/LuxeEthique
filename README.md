@@ -88,6 +88,8 @@ In terms of involvement from third party applications, Luxe Ethique utilizes Clo
 Describe your projects models in terms of the relationships (active record associations) they have with each other
 The User model is the central model that has relationships to the other models within the application.
 User
+```rolify```
+```has_and_belongs_to_many :users, :join_table => :users_roles```
 ```has_one :user_detail, dependent: :destroy```
 ```has_many :product_listings, dependent: :destroy```
 ```accepts_nested_attributes_for :user_details```
@@ -105,6 +107,17 @@ Role
 
 ### R18 ###
 Discuss the database relations to be implemented in your application
+
+The order in which data tables are created is vital when working with Rails to correctly construct relationships and keep with convention. To create these conntections, I will utilize foreign keys, which link one table to another. 
+As the User is the central data table within my application, this model will created first. I knew I would be using devise, so kept the attributes as email and password as these are the sign in credentials that easily work with devise.
+In order to capture a users full details at sign in to be later used primarily for shipping, a data table needed to be created to establish the relationship between the user and user details. The user details captures name, address and contact number with the foreign key of the user id. User details belongs to user and user has_one user details. With the relationship established, the admin can now access the user details from the user.
+The user details will be collected for the data base via the devise registration/sing up form. To attach these details to the user, accepts_nested_attributes_for was utilized to establish this connection and collect the information.
+In order to establish the roles of each user, Rolify was implemented on the user model. This created two more data tables to enable users to be assigned roles creating a has_many_and_belongs_to relationship between users and user roles. This is done automatically with Rolify.
+The next data table that needed to be created was the product listing. This model includes product details such as name and price, as well as a boolean value of 'approved' so the admin has control over the listing. To establish the relationship with the user, the foreign key was enabled using user:references as the last attribute. Each user has a has_many relationship with the product listings data table to create the ability for each user to list as many items as needed. One of the data fields that needs to be filled for the product listing is an image field. This relationship is established through the has_one_attached component.
+MENTION STATE AND POSTCODE ISSUES??
+With thes relationships established between the data tables, the application is able to function as planned.
+
+
 
 ### R19 ###
 Provide your database schema design
