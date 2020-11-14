@@ -5,7 +5,7 @@ class ProductListingsController < ApplicationController
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!, except: [:index]
   before_action :check_user, only: [:admin]
-
+#limit for product listings on each page (pagination)
   PRODUCTLISTINGS_PER_PAGE = 4
   
 
@@ -76,12 +76,13 @@ class ProductListingsController < ApplicationController
   end
 
   def buy
-    Stripe.api_key = ENV['STRIPE_API_KEY']
+    authorize! :read, @product_listings
+    Stripe.api_key = 'sk_test_51HgT8YJbyxCSQYdENWbWG1btsOQglHMZ7fPNVhacHQ0NrrRctyTT1ZTOzImAGctvTsQWmaz2njn7sVLMhuUyH9Yz00333Yw1og'
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       mode: 'payment',
-      success_url: success_url(params[:id]),
-      cancel_url: cancel_url(params[:id]),
+      success_url: "#{product_listings_url}/payments/success?eventId=#{@product_listing.id}",
+      cancel_url: "#{product_listings_url}",
       line_items: [
         {
           price_data: {
@@ -97,14 +98,6 @@ class ProductListingsController < ApplicationController
 
     })
     render json: session
-  end
-
-  def success
-    render plain: 'Success!'
-  end
-
-  def cancel
-    render plain: 'Success!'
   end
 
   private
