@@ -26,7 +26,7 @@ https://github.com/Ashlie-G/LuxeEthique
 The purpose of this app is to create an reputable two way marketplace that allows users to list or purchase authentic pre-loved luxury handbags. It will provide a place for people to purchase ethically and not feel bad about wanting luxury items.
 
 #### Functionality / features ####
-Luxe Ethique enables any visitor to the application to view the current approved listings aka the 'Wardrobe'. They are presented with a set amount of items displayed per page, and are able to navigate to the next or previous pages. If the visitor wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system that asks for email, password, contact number and address.
+Luxe Ethique enables any visitor to the application to read about the application on the about page, contact me via the contact page, or view the current approved listings aka the 'Wardrobe'. They are presented with a set amount of items displayed per page, and are able to navigate to the next or previous pages. If the visitor wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system that asks for email, password, contact number and address.
 If the visitor is a user, they can sign into their account with their email and password. Once signed in, they are able to access their user profile which allows them to see their current listings(if any) and edit their information. A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to edit or destroy it. Users can also create a new listing by completing the form and uploading images of the product as well as its authenticity. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
 The admin user has access to everything in the app from the admin dashboard. The dashboard features all the active listings and users. From here, the admin user is able to view submitted listings and once product authenticity is confirmed, the admin user can approve it. Once the product listing is approved, it is featured in the shop.
 The application features an 'About' and 'Contact' page which provides visitors with background information on what the application is about, and an avenue for them to contact the admin user with enquiries.
@@ -36,7 +36,8 @@ insert sitemap png here
 - Screenshots
 insert screen shots here
 - Target audience
-The target audience for the application is anyone wanting to make more concious decisions about their buying habits when it comes to luxury items. Primarily people who have chosen and plantbased or vegan style, however with the current climate, more people are looking for ethical alternatives.
+The target audience for the application is anyone wanting to make more conscious decisions about their buying habits when it comes to luxury items. Primarily people who have chosen and plantbased or vegan lifestyle, however with the current climate, more people are looking for ethical alternatives.
+
 - Tech stack (e.g. html, css, deployment platform, etc)
 Framework
 - Ruby on rails
@@ -84,7 +85,10 @@ Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). I
 
 ### R16 ###
 Detail any third party services that your app will use
-In terms of involvement from third party applications, Luxe Ethique utilizes Cloudify for image hosting, Stripe for payment systems and Heroku for deployment. 
+In terms of involvement from third party applications, Luxe Ethique utilizes Cloudify for image hosting, Stripe for payment systems and Heroku for deployment.
+- Cloudify
+- Stripe
+- Heroku
 
 ### R17 ###
 Describe your projects models in terms of the relationships (active record associations) they have with each other
@@ -118,8 +122,6 @@ In order to establish the roles of each user, Rolify was implemented on the user
 The next data table that needed to be created was the product listing. This model includes product details such as name and price, as well as a boolean value of 'approved' so the admin has control over the listing. To establish the relationship with the user, the foreign key was enabled using user:references as the last attribute. Each user has a has_many relationship with the product listings data table to create the ability for each user to list as many items as needed. One of the data fields that needs to be filled for the product listing is an image field. This relationship is established through the has_one_attached component.
 MENTION STATE AND POSTCODE ISSUES??
 With thes relationships established between the data tables, the application is able to function as planned.
-
-
 
 ### R19 ###
 Provide your database schema design
