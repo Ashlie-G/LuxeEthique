@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   end
 
   def admin
+    #eager loader method .includes on all users for user_details
     @user = User.includes(:user_detail)
     @product_listings = ProductListing.all
   end
@@ -28,10 +29,6 @@ def check_user
     flash[:alert] = "You are not authorized to access that page"
     redirect_to root_path
   end
-end
-
-def set_user
-
 end
 
 end

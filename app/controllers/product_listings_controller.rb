@@ -77,7 +77,7 @@ class ProductListingsController < ApplicationController
 
   def buy
     authorize! :read, @product_listings
-    Stripe.api_key = 'sk_test_51HgT8YJbyxCSQYdENWbWG1btsOQglHMZ7fPNVhacHQ0NrrRctyTT1ZTOzImAGctvTsQWmaz2njn7sVLMhuUyH9Yz00333Yw1og'
+    Stripe.api_key = ENV['STRIPE_API_KEY']
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       mode: 'payment',
