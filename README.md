@@ -79,7 +79,7 @@ An ERD for your app
 ### R15 ###
 Explain the different high-level components (abstractions) in your app
 
-Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in realtional database management systems. We can then easily store and request data without having to write specific SQL statements.
+Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in relational database management systems. We can then easily store and request data without having to write specific SQL statements.
 
 
 ### R16 ###
@@ -161,19 +161,24 @@ Log
 - Tuesday 10th
     - build order, order items models and cart controller.
     - 'cart' functioning as desired. 
-- Wednesday 12th
+- Wednesday 11th
     - implement stripe to cart.
     - this proved to waste too much time, the way i planned my cart did work with how i have used stripe previously, removed order and order items models and cart controller.
     - implemented stripe to each item rather than cart (selection of items) 
-- Thursday 13th
+- Thursday 12th
     - build user profile page, unable to edit details at this point in time, assuming same issue with nesting and custom devise forms.
     - started about page, placeholder image and soe test about the application.
     - limit product listings on wardrobe (shop) page, build without pagination gem. 
-- Friday 14th
+- Friday 13th
     - move all private info to env
     - cloudianry and stripe now not functional since moving to env.
     - complete more of readme.md
-    - corrected seed file to set user details of admin and test user. 
+    - corrected seed file to set user details of admin and test user.
+- Sunday 15th
+    - ammended stripe access through env and created routes for success. Attempted to change status of item when purchased, still not functioning.
+    - added egaer loading to user/user details and validated and sanitized product listings.
+    - created site map and first draft on questions for documnetation 
+
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
 Link to trello
