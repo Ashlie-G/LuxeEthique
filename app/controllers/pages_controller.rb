@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   # skip_before_action :verify_authenticity_token, only: [:profile]
   before_action :authenticate_user!, except: [:index, :about, :contact]
   before_action :check_user, only: [:admin]
+  # before_action :set_user, only: [:profile]
   
   def index
   end
@@ -24,6 +25,11 @@ class PagesController < ApplicationController
   end
 
 private
+
+# def set_user
+#   @user = User.find_by(params[:id])
+# end
+
 def check_user
   if (user_signed_in? && !current_user.has_role?(:admin))
     flash[:alert] = "You are not authorized to access that page"

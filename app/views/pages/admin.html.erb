@@ -24,7 +24,7 @@
         <td><%= product_listing.description %></td>
         <td><%= product_listing.price %></td>
         <td><%= product_listing.approved %></td>
-        <td><%= cl_image_tag(product_listing.image.key, crop: :scale, width: 100, cloud_name:'ashlii')%></td>
+        <td><%= cl_image_tag(product_listing.image.key, crop: :scale, width: 100, cloud_name: 'ashlii')%></td>
         <td><%= product_listing.user_id %></td>
         <td><%= link_to 'Show', product_listing %></td>
         <% if current_user.has_role? :admin %>
