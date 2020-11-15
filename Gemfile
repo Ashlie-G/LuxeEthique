@@ -64,9 +64,8 @@ gem 'devise'
 gem "cloudinary", "~> 1.18"
 gem "activestorage-cloudinary-service", "~> 0.2.3"
 
-
-
 gem "rolify", "~> 5.3"
 gem 'cancancan'
 
 gem 'stripe'
+gem 'will_paginate', '~> 3.1.0'

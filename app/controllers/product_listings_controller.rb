@@ -6,7 +6,7 @@ class ProductListingsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :check_user, only: [:admin]
 #limit for product listings on each page (pagination)
-  PRODUCTLISTINGS_PER_PAGE = 4
+  #PRODUCTLISTINGS_PER_PAGE = 4
   
 
   # GET /product_listings
@@ -14,8 +14,8 @@ class ProductListingsController < ApplicationController
   #sets pagination(limits listings on each page) and shows current product listins
   def index
     @page = params.fetch(:page, 0).to_i
-    @product_listings = ProductListing.offset(@page * PRODUCTLISTINGS_PER_PAGE).limit(PRODUCTLISTINGS_PER_PAGE)
-
+    #@product_listings = ProductListing.offset(@page * PRODUCTLISTINGS_PER_PAGE).limit(PRODUCTLISTINGS_PER_PAGE)
+    @product_listings = ProductListing.paginate(page: params[:page])
   end
 
   # GET /product_listings/1
