@@ -61,8 +61,9 @@ User stories for Luxe Ethique
 - Visitors can view the 'Contact' page and submit and enquiry email.
 - If visitors would like to get more detail about a product, they will need to sign up to become a user.
 - Visitors are able to sign up with a form submitting their email, password, contact number and address.
-- Users can create a profile with name address and phone number to attach their details to their account.
+- Users have a profile with name address and phone number to attach their details to their account.
 - Users can update their profile and view their current listings.
+- Users can delete their profile.
 - Users can browse the wardrobe of luxury handbags for sale and purchase knowing it is an authentic product.
 - Users can submit their authentic handbags that they wish to sell with images.
 - Users can edit their approved listings.
@@ -77,8 +78,9 @@ Wireframes for your app
 An ERD for your app
 ### R15 ###
 Explain the different high-level components (abstractions) in your app
-active record - mvc
-postgresql
+
+Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in realtional database management systems. We can then easily store and request data without having to write specific SQL statements.
+
 
 ### R16 ###
 Detail any third party services that your app will use
@@ -176,3 +178,6 @@ Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
 Link to trello
 https://trello.com/b/uKcWVvCJ/luxe-ethique
+
+REFERENCES
+https://guides.rubyonrails.org/active_record_basics.html

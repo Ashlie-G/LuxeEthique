@@ -31,4 +31,8 @@ def check_user
   end
 end
 
+def set_user
+
+end
+
 end

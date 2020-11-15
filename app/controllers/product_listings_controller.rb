@@ -1,6 +1,6 @@
 class ProductListingsController < ApplicationController
-  #cancancan component that sets up before_filter which calls load_resource and authorize_resource
-  load_and_authorize_resource
+  #cancancan component that sets up before_filter which calls load_resource, authorize_resource and santizes product listing params
+  load_and_authorize_resource param_method: :product_listing_params
   skip_before_action :verify_authenticity_token, only: [:create, :buy]
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!, except: [:index]
