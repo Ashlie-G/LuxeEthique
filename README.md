@@ -87,8 +87,11 @@ Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). I
 Detail any third party services that your app will use
 In terms of involvement from third party applications, Luxe Ethique utilizes Cloudify for image hosting, Stripe for payment systems and Heroku for deployment.
 - Cloudify
+    - Cloudinary is a cloud based iage and video service. It allows a user to upload, store and edit images or video for websites and applications. Luxe ethque uses it to facilitate the image upload for new and exisiting listings.
 - Stripe
+    - Stripe is a payment processing software for e-commerce websites and mobile applications. It will be imlpemented within the app for users to purchase products.
 - Heroku
+    - Heroku is a cloud platform that allows developers to build and operate applications in the cloud. Heroku supports many computer languages and makes the deployment process seamless.
 
 ### R17 ###
 Describe your projects models in terms of the relationships (active record associations) they have with each other
