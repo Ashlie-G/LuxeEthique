@@ -57,18 +57,18 @@
     <tbody>
 
 
-      <% @details.each do |user| %>
+      <% @user.each do |u| %>
         <tr>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.contact_number %></td>
-          <td><%= user.address_line_1 %></td>
-          <td><%= user.address_line_2 %></td>
-          <td><%= user.suburb %></td>
-          <td><%= user.state %></td>
-          <td><%= user.postcode %></td>
-          <td><%= user.user_id %></td>
-          <td><%= user.user.email %></td>
+          <td><%= u.user_detail.first_name %></td>
+          <td><%= u.user_detail.last_name %></td>
+          <td><%= u.user_detail.contact_number %></td>
+          <td><%= u.user_detail.address_line_1 %></td>
+          <td><%= u.user_detail.address_line_2 %></td>
+          <td><%= u.user_detail.suburb %></td>
+          <td><%= u.user_detail.state %></td>
+          <td><%= u.user_detail.postcode %></td>
+          <td><%= u.user_detail.user_id %></td>
+          <td><%= u.user_detail.user.email %></td>
           <td><%= link_to 'Edit', user_registration_path, method: :patch %></td>
           <td><%= link_to 'Destroy', '/users', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

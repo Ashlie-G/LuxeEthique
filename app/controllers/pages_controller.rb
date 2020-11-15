@@ -15,9 +15,8 @@ class PagesController < ApplicationController
   end
 
   def admin
+    @user = User.includes(:user_detail)
     @product_listings = ProductListing.all
-    @user = User.all
-    @details = UserDetail.all
   end
 
   def contact
