@@ -1,19 +1,18 @@
 <h1>Contact Us</h1>
 
-<div class="container-contact">
-    <form id="contact" action="https://formspree.io/f/mknpzjal" method="post">
-      <br>
-      <fieldset>
-        <input name="Name" placeholder="Your name" type="text" required autofocus>
-      </fieldset>
-      <fieldset>
-        <input name="Email" placeholder="Your Email Address" type="email-2" required>
-      </fieldset>
-      <fieldset>
-        <textarea name="Message" placeholder="Type your message here...." required></textarea>
-      </fieldset>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-<form
+<form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/mknpzjal" method="post">
+  <fieldset id="fs-frm-inputs">
+    <label for="full-name">Full Name</label>
+    <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
+    <label for="email-address">Email Address</label>
+    <input type="email" name="_replyto" id="email-address" placeholder="email@domain.tld" required="">
+    <label for="message">Message</label>
+    <textarea rows="5" name="message" id="message" placeholder="Type your message here" required=""></textarea>
+    <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+  </fieldset>
+  <input type="submit" value="Submit">
+</form>
+
+
+
   
