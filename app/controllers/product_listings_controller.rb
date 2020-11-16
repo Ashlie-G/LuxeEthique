@@ -13,7 +13,7 @@ class ProductListingsController < ApplicationController
   # GET /product_listings.json
   #sets pagination(limits listings on each page) and shows current product listins
   def index
-    @page = params.fetch(:page, 0).to_i
+    #@page = params.fetch(:page, 0).to_i
     #@product_listings = ProductListing.offset(@page * PRODUCTLISTINGS_PER_PAGE).limit(PRODUCTLISTINGS_PER_PAGE)
     @product_listings = ProductListing.paginate(page: params[:page])
   end

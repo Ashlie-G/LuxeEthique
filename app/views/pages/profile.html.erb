@@ -61,7 +61,9 @@
         <td><%= product_listing.approved %></td>
         <td><%= cl_image_tag(product_listing.image.key, crop: :scale, width: 100, cloud_name: 'ashlii')%></td>
         <td><%= link_to 'Show', product_listing %></td>
+        <% if can? :manage, :all %>
         <td><%= link_to 'Edit', edit_product_listing_path(product_listing) %></td>
+        <% end %>
         <td><%= link_to 'Destroy', product_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       
       </tr>

@@ -18,7 +18,9 @@ class PagesController < ApplicationController
   def admin
     #eager loader method .includes on all users for user_details
     @user = User.includes(:user_detail)
-    @product_listings = ProductListing.all
+    #@product_listings = ProductListing.all
+    @product_listings = ProductListing.paginate(page: params[:page])
+
   end
 
   def contact

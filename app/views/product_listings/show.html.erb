@@ -55,12 +55,7 @@
                           return stripe.redirectToCheckout({ sessionId: session.id })
                       })
               })
-          </script>
-          
-          
-          <% if can? :update, @product_listing %>
-          <%= link_to 'Edit', edit_product_listing_path(@product_listing)%>
-          <%end%>          
+            </script>        
 
   </div>
 </div>
