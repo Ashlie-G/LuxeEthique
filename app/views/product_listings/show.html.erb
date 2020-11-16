@@ -7,7 +7,7 @@
           <% if current_user.id == @product_listing.user_id %>
             <strong>This is your listing</strong>
           <%end%>
-
+          <br>
           <p>
             <strong>Name:</strong>
             <%= @product_listing.name %>
@@ -35,9 +35,8 @@
             <strong>Colour:</strong>
             <%= @product_listing.colour %>
           </p>
-          
           <p><button id="buynow-button" class="btn btn-primary btn-lg">Buy</button></p> 
-
+          
           <script src="https://js.stripe.com/v3/"></script>
           
           <script>
