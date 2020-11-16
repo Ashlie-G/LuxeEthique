@@ -27,9 +27,9 @@ The purpose of this app is to create an reputable two way marketplace that allow
 
 #### Functionality / features ####
 Luxe Ethique enables any visitor to the application to read about the application on the about page, contact me via the contact page, or view the current approved listings aka the 'Wardrobe'. They are presented with a set amount of items displayed per page, and are able to navigate to the next or previous pages. If the visitor wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system that asks for email, password, contact number and address.
-If the visitor is a user, they can sign into their account with their email and password. Once signed in, they are able to access their user profile which allows them to see their current listings(if any) and edit their information. A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to edit or destroy it. Users can also create a new listing by completing the form and uploading images of the product as well as its authenticity. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
-The admin user has access to everything in the app from the admin dashboard. The dashboard features all the active listings and users. From here, the admin user is able to view submitted listings and once product authenticity is confirmed, the admin user can approve it. Once the product listing is approved, it is featured in the shop.
-The application features an 'About' and 'Contact' page which provides visitors with background information on what the application is about, and an avenue for them to contact the admin user with enquiries.
+If the visitor is a user, they can sign into their account with their email and password. Once signed in, they are able to access their user profile which allows them to see their current listings(if any) and edit their information. A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to destroy it. Users can also create a new listing by completing the form and uploading and image of the product as well as subit its proof of authenticity via email. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
+The admin user has access to everything in the app from the admin dashboard. The dashboard features all the active listings, users and payments. From here, the admin user is able to view submitted listings and once product authenticity is confirmed, the admin user can approve it. Once the product listing is approved, it is featured in the shop.
+
 
 - Sitemap
 insert sitemap png here
@@ -49,7 +49,7 @@ Authentication and Authoritsation
 - Rolify
 - Cancancan
 Image Hosting
-- Cloudify
+- Cloudinary
 Payment System
 - Stripe
 Deployment
@@ -65,12 +65,14 @@ User stories for Luxe Ethique
 - Users have a profile with name address and phone number to attach their details to their account.
 - Users can update their profile and view their current listings.
 - Users can delete their profile.
-- Users can browse the wardrobe of luxury handbags for sale and purchase knowing it is an authentic product.
+- Users can browse the wardrobe of luxury handbags for sale
+- Users can purchase a product listing through stripe
 - Users can submit their authentic handbags that they wish to sell with images.
-- Users can edit their approved listings.
+- Users can delete their listings.
 - Administrators can view and approve listing pending for sale.
 - Administrators can edit or destroy any listing.
 - Administrators can view all current listings and all users.
+- Administrators can view all product listings bought
 
 
 ### R13 ###
@@ -80,7 +82,12 @@ An ERD for your app
 ### R15 ###
 Explain the different high-level components (abstractions) in your app
 
-Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in relational database management systems. We can then easily store and request data without having to write specific SQL statements.
+Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in relational database management systems. We can then easily store and request data without having to write specific SQL statements. This then provides our controller with the logic it needs in order to send information to the view.
+For the purposes of the application, a user, user details, product listing and payment model with controllers were constructed. The models for Rolify and Cancancan are generated when integrating their features.
+The user model is also attached to devise, rolify and cancancan. These three gems work together to build a strong authentication and authorization system featuring their built in methods.
+The user details model has a relationship with the user in order to obtain the information in the database, but seperate the tables for data integrity.
+The product listing model enables the relationships between the user, product listing and payment models. The product listing controller allows for the logic to be presented in the views.
+Payments/ sales are tracked by the payments model and controller which allow the admin user to view a users purchases and track the recent sales within the application.
 
 
 ### R16 ###
@@ -100,14 +107,16 @@ User
 ```rolify```
 ```has_and_belongs_to_many :users, :join_table => :users_roles```
 ```has_one :user_detail, dependent: :destroy```
+```has_one :payment```
 ```has_many :product_listings, dependent: :destroy```
 ```accepts_nested_attributes_for :user_details```
-The UserDetail model contains all the details for each user, their name, address and contact number.
+The UserDetail model contains all the details for each user, their name, address and contact number to maintain data integrity.
 UserDetail
 ```belongs_to :user```
-The ProductListing model is responsible for the manage of each product listed by a user within the application.
+The ProductListing model is responsible for the management of each product listed and payment by a user within the application.
 ProductListing
 ```belongs_to :user```
+```has_one :payment```
 ```has_one_attached :image```
 Rolify creates its own models based around the user model. It creates a role model that creates a joining table to user roles. It belongs to the resource that it was created off, in this case the User model.
 Role
@@ -123,6 +132,7 @@ In order to capture a users full details at sign in to be later used primarily f
 The user details will be collected for the data base via the devise registration/sing up form. To attach these details to the user, accepts_nested_attributes_for was utilized to establish this connection and collect the information.
 In order to establish the roles of each user, Rolify was implemented on the user model. This created two more data tables to enable users to be assigned roles creating a has_many_and_belongs_to relationship between users and user roles. This is done automatically with Rolify.
 The next data table that needed to be created was the product listing. This model includes product details such as name and price, as well as a boolean value of 'approved' so the admin has control over the listing. To establish the relationship with the user, the foreign key was enabled using user:references as the last attribute. Each user has a has_many relationship with the product listings data table to create the ability for each user to list as many items as needed. One of the data fields that needs to be filled for the product listing is an image field. This relationship is established through the has_one_attached component.
+The final table to be contructed was the payments table in order to track all sales of product listings. The model has a realtionship with both the user and product listings model.
 MENTION STATE AND POSTCODE ISSUES??
 With thes relationships established between the data tables, the application is able to function as planned.
 
@@ -182,7 +192,12 @@ Log
 - Sunday 15th
     - ammended stripe access through env and created routes for success. Attempted to change status of item when purchased, still not functioning.
     - added egaer loading to user/user details and validated and sanitized product listings.
-    - created site map and first draft on questions for documnetation 
+    - created site map and first draft on questions for documnetation
+- Monday 16th
+    - cloudinary issue was resolved by changing ENV references with ruby tags.
+    - pagination pages issue resolved by implementing will_paginate gem.
+    - cancancan abilities changed for user so any user can buy a product listing.
+    - payments are now tracked by a payments model and controller, the result is displayed in the admin dashboard.
 
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
