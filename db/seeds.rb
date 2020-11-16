@@ -28,9 +28,10 @@ bag_1 = ProductListing.new(name: "Pochette Metis",
     category: "Shoulder Bag", 
     colour: "Other", 
     approved: true,
-    user_id: 1)
-    bag_1.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lv_purse.jpg')), filename: 'lv_purse.jpg')
-    bag_1.save!
+    user_id: 1
+)
+bag_1.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lv_purse.jpg')), filename: 'lv_purse.jpg')
+bag_1.save!
 bag_2 = ProductListing.new(name: "Chanel Classic", 
     brand: "Chanel", 
     description: "Perfect condition", 
