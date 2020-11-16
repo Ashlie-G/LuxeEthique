@@ -28,7 +28,7 @@ bag_1 = ProductListing.new(name: "Pochette Metis",
     category: "Shoulder Bag", 
     colour: "Other", 
     approved: true,
-    user_id: 1
+    user_id: admin.id
 )
 bag_1.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lv_purse.jpg')), filename: 'lv_purse.jpg')
 bag_1.save!
@@ -39,7 +39,8 @@ bag_2 = ProductListing.new(name: "Chanel Classic",
     category: "Shoulder Bag", 
     colour: "White",
     approved: false,
-    user_id: 1)
+    user_id: admin.id
+)
     bag_2.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Chanel_Classic.jpg')), filename: 'Chanel_Classic.jpg')
     bag_2.save!
 bag_3 = ProductListing.new(name: "Pochette Metis", 
@@ -49,7 +50,8 @@ bag_3 = ProductListing.new(name: "Pochette Metis",
     category: "Shoulder Bag", 
     colour: "Other", 
     approved: true,
-    user_id: 1)
+    user_id: admin.id
+)
     bag_3.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lv_purse.jpg')), filename: 'lv_purse.jpg')
     bag_3.save
 bag_4 = ProductListing.new(name: "Chanel Classic", 
@@ -59,7 +61,8 @@ bag_4 = ProductListing.new(name: "Chanel Classic",
     category: "Shoulder Bag", 
     colour: "White",
     approved: false,
-    user_id: 1)
+    user_id: admin.id
+)
     bag_4.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Chanel_Classic.jpg')), filename: 'Chanel_Classic.jpg')
     bag_4.save
 bag_5 = ProductListing.new(name: "Pochette Metis", 
@@ -69,7 +72,8 @@ bag_5 = ProductListing.new(name: "Pochette Metis",
     category: "Shoulder Bag", 
     colour: "Other", 
     approved: true,
-    user_id: 1)
+    user_id: admin.id
+)
     bag_5.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lv_purse.jpg')), filename: 'lv_purse.jpg')
     bag_5.save
 bag_6 = ProductListing.new(name: "Pochette Metis", 
@@ -79,7 +83,8 @@ bag_6 = ProductListing.new(name: "Pochette Metis",
     category: "Shoulder Bag", 
     colour: "Other", 
     approved: true,
-    user_id: 1)
+    user_id: admin.id
+)
     bag_6.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lv_purse.jpg')), filename: 'lv_purse.jpg')
     bag_6.save
 bag_7 = ProductListing.new(name: "Chanel Classic", 
@@ -89,7 +94,8 @@ bag_7 = ProductListing.new(name: "Chanel Classic",
     category: "Shoulder Bag", 
     colour: "White",
     approved: true,
-    user_id: 1)
+    user_id: admin.id
+)
     bag_7.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Chanel_Classic.jpg')), filename: 'Chanel_Classic.jpg')
     bag_7.save
    
