@@ -20,6 +20,7 @@ class PagesController < ApplicationController
     @user = User.includes(:user_detail)
     #@product_listings = ProductListing.all
     @product_listings = ProductListing.paginate(page: params[:page])
+    @orders = Payment.all
 
   end
 
