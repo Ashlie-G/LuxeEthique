@@ -93,13 +93,15 @@ Payments/ sales are tracked by the payments model and controller which allow the
 
 ### R16 ###
 Detail any third party services that your app will use
-In terms of involvement from third party applications, Luxe Ethique utilizes Cloudify for image hosting, Stripe for payment systems and Heroku for deployment.
-- Cloudify
-    - Cloudinary is a cloud based iage and video service. It allows a user to upload, store and edit images or video for websites and applications. Luxe ethque uses it to facilitate the image upload for new and exisiting listings.
+In terms of involvement from third party applications, Luxe Ethique utilizes Cloudinary for image hosting, Stripe for payment systems and Heroku for deployment.
+- Cloudinary
+    - Cloudinary is a cloud based image and video service. It allows a user to upload, store and edit images or video for websites and applications. Luxe ethque uses it to facilitate the image upload for new and exisiting listings.
 - Stripe
     - Stripe is a payment processing software for e-commerce websites and mobile applications. It will be imlpemented within the app for users to purchase products.
 - Heroku
     - Heroku is a cloud platform that allows developers to build and operate applications in the cloud. Heroku supports many computer languages and makes the deployment process seamless.
+- Formspree
+    - Formspree is a form backend API and email service used for HTML forms. This service provided the action and inputs for the contact form to send the request straight the the Luxe Ethique email account.
 
 ### R17 ###
 Describe your projects models in terms of the relationships (active record associations) they have with each other
@@ -109,30 +111,31 @@ User
 ```has_and_belongs_to_many :users, :join_table => :users_roles```
 ```has_one :payment```
 ```has_many :product_listings, dependent: :destroy```
-The UserDetail model contains all the details for each user, their name, address and contact number to maintain data integrity.
-UserDetail
-```belongs_to :user```
-The ProductListing model is responsible for the management of each product listed and payment by a user within the application.
+As the user model was used to implement Rolify, the rolify joining table is created automatically.
+A user id must be attached to every payment as both buyer and seller, but only one payment can be occuring at a time.
+A user can have as many listings as they like on the application, so the has_many relationship is established between the user and the product listings.
+The ProductListing model is responsible for the management of each product listed.
 ProductListing
 ```belongs_to :user```
 ```has_one :payment```
 ```has_one_attached :image```
-Rolify creates its own models based around the user model. It creates a role model that creates a joining table to user roles. It belongs to the resource that it was created off, in this case the User model.
-Role
-```has_and_belongs_to_many :users, :join_table => :users_roles```
+The product listing belongs to the user, establishing the realtionship and foreign key. A product listing can only have one payment as there will only ever be one item per listing. Each product listing must have an image attached in order to be transparent to buyers, so the has one attached realtionship is established.
+When each product listing is bought, the payment must be tracked. The Payment model captures this information.
+```belongs_to :user```
+```belongs_to :product_listing```
+The payment model also belongs to the user as well as the product listing. These forign keys establish the realtionship and enable payments to be attached to the user buying, the user selling and the product listing itself.
 
 
 ### R18 ###
 Discuss the database relations to be implemented in your application
 
-The order in which data tables are created is vital when working with Rails to correctly construct relationships and keep with convention. To create these conntections, I will utilize foreign keys, which link one table to another. 
-As the User is the central data table within my application, this model will created first. I knew I would be using devise, so kept the attributes as email and password as these are the sign in credentials that easily work with devise.
-In order to capture a users full details at sign in to be later used primarily for shipping, a data table needed to be created to establish the relationship between the user and user details. The user details captures name, address and contact number with the foreign key of the user id. User details belongs to user and user has_one user details. With the relationship established, the admin can now access the user details from the user.
-The user details will be collected for the data base via the devise registration/sing up form. To attach these details to the user, accepts_nested_attributes_for was utilized to establish this connection and collect the information.
+The order in which data tables are created is vital when working with Rails to correctly construct relationships and keep with convention. To create these connections, I will utilize foreign keys, which link one table to another. 
+As the User is the central data table within my application, this model will created first. 
+
 In order to establish the roles of each user, Rolify was implemented on the user model. This created two more data tables to enable users to be assigned roles creating a has_many_and_belongs_to relationship between users and user roles. This is done automatically with Rolify.
 The next data table that needed to be created was the product listing. This model includes product details such as name and price, as well as a boolean value of 'approved' so the admin has control over the listing. To establish the relationship with the user, the foreign key was enabled using user:references as the last attribute. Each user has a has_many relationship with the product listings data table to create the ability for each user to list as many items as needed. One of the data fields that needs to be filled for the product listing is an image field. This relationship is established through the has_one_attached component.
-The final table to be contructed was the payments table in order to track all sales of product listings. The model has a realtionship with both the user and product listings model.
-MENTION STATE AND POSTCODE ISSUES??
+The final table to be constructed was the payments table in order to track all sales of product listings. The model has a realtionship with both the user and product listings model.
+MENTION USER DETAILS/STATE AND POSTCODE ISSUES??
 With thes relationships established between the data tables, the application is able to function as planned.
 
 ### R19 ###
