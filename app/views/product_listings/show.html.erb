@@ -1,63 +1,6 @@
 
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">
-    <p><%= cl_image_tag(@product_listing.image.key, crop: :scale, width: 285, cloud_name: 'ashlii')%></p>
-      
-          <% if current_user.id == @product_listing.user_id %>
-            <strong>This is your listing</strong>
-          <%end%>
-          <br>
-          <p>
-            <strong>Name:</strong>
-            <%= @product_listing.name %>
-          </p>
-          <p>
-            <strong>Brand:</strong>
-            <%= @product_listing.brand %>
-          </p></h5>
-        <p class="card-text">
-          <p>
-            <strong>Description:</strong>
-            <%= @product_listing.description %>
-          </p>
-          <p>
-            <strong>Price:</strong>
-            $<%= @product_listing.price %>
-          </p>
-          
-          <p>
-            <strong>Category:</strong>
-            <%= @product_listing.category %>
-          </p>
-
-          <p>
-            <strong>Colour:</strong>
-            <%= @product_listing.colour %>
-          </p>
-          <p><button id="buynow-button" class="btn btn-primary btn-lg">Buy</button></p> 
-          
-          <script src="https://js.stripe.com/v3/"></script>
-          
-          <script>
-              const stripe = Stripe('<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>')
-              const buyButton = document.getElementById('buynow-button')
-          
-              buyButton.addEventListener('click', function(){
-                  fetch('<%= buy_path(@product_listing.id) %>', { 
-                      method: 'POST'
-                      })
-                      .then(function(response) {
-                          return response.json()
-                      })
-                      .then(function(session) {
-                          return stripe.redirectToCheckout({ sessionId: session.id })
-                      })
-              })
-            </script>        
-
-  </div>
-</div>
+ <%= render 'partials/productlistings' %> 
+ 
 <% if current_user.has_role? :admin %>
 <%= link_to "Back to Admin View", admin_path, class:"btn btn-primary"%>
 <%end%>

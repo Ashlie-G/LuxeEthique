@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @profile = current_user
+    # @user = current_user
     @listing = current_user.product_listings
   end
 

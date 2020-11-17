@@ -197,6 +197,12 @@ Log
     - pagination pages issue resolved by implementing will_paginate gem.
     - cancancan abilities changed for user so any user can buy a product listing.
     - payments are now tracked by a payments model and controller, the result is displayed in the admin dashboard.
+- Tuesday 17th
+    - tried to get the nested table working for user_details but was wasting far too much time on something i didnt know enough about, so removed this user_details model.
+    - amended the user table to contain all the user details on sign up and render the email and password for log in at session.
+    - still unable to edit the user profile, so also removed tha ability and just set a 'my listings' page.
+    - added ability for only admin to see admin link
+    - added feature that the owner of a listing can't see the buy button
 
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
