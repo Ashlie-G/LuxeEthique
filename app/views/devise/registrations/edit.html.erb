@@ -16,35 +16,34 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>          
-      
-        <%= f.input :first_name,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "first name" }%>
-        <%= f.input :last_name,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "last name" }%>
-        <%= f.input :contact_number,
-                      required: true,
-                      autofocus: true,
-                        input_html: { autocomplete: "contact number" }%>
-        <%= f.input :address,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "address line 1" }%>
-        <%= f.input :suburb,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "Suburb" }%>
-        <%= f.input :state, collection: ["QLD", "NSW", "VIC", "NT", "SA", "WA", "ACT"],
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "State" }%>
-        <%= f.input :postcode,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "Postcode" }%>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first name" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last name" }%>
+      <%= f.input :contact_number,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "contact number" }%>
+      <%= f.input :address,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "address" }%>
+      <%= f.input :suburb,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "Suburb" }%>
+      <%= f.input :state, collection: ["QLD", "NSW", "VIC", "NT", "SA", "WA", "ACT"],
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "State" }%>
+      <%= f.input :postcode,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "Postcode" }%>
 
   
   <div class="form-actions">
