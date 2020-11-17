@@ -61,16 +61,15 @@
 
       <% @user.each do |u| %>
         <tr>
-          <td><%= u.user_detail.user_id %></td>
-          <td><%= u.user_detail.user.email %></td>
-          <td><%= u.user_detail.first_name %></td>
-          <td><%= u.user_detail.last_name %></td>
-          <td><%= u.user_detail.contact_number %></td>
-          <td><%= u.user_detail.address_line_1 %></td>
-          <td><%= u.user_detail.address_line_2 %></td>
-          <td><%= u.user_detail.suburb %></td>
-          <td><%= u.user_detail.state %></td>
-          <td><%= u.user_detail.postcode %></td>
+          <td><%= u.id %></td>
+          <td><%= u.email %></td>
+          <td><%= u.first_name %></td>
+          <td><%= u.last_name %></td>
+          <td><%= u.contact_number %></td>
+          <td><%= u.address %></td>
+          <td><%= u.suburb %></td>
+          <td><%= u.state %></td>
+          <td><%= u.postcode %></td>
           <td><%= link_to 'Destroy', '/users', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

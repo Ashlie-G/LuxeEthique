@@ -16,44 +16,36 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>          
-    </div>
-    <div>
-      <%= f.fields_for current_user.user_detail do |form| %>
-        <%= form.input :first_name,
+      
+        <%= f.input :first_name,
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "first name" }%>
-        <%= form.input :last_name,
+        <%= f.input :last_name,
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "last name" }%>
-        <%= form.input :contact_number,
+        <%= f.input :contact_number,
                       required: true,
                       autofocus: true,
                         input_html: { autocomplete: "contact number" }%>
-        <%= form.input :address_line_1,
+        <%= f.input :address,
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "address line 1" }%>
-        <%= form.input :address_line_2,
-                      autofocus: true,
-                      input_html: { autocomplete: "address line 2" }%>
-        <%= form.input :suburb,
+        <%= f.input :suburb,
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "Suburb" }%>
-        <%= form.input :state, collection: ["QLD", "NSW", "VIC", "NT", "SA", "WA", "ACT"],
+        <%= f.input :state, collection: ["QLD", "NSW", "VIC", "NT", "SA", "WA", "ACT"],
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "State" }%>
-        <%= form.input :postcode,
+        <%= f.input :postcode,
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "Postcode" }%>
-    
-      <% end %>
-                                      
-    </div>
+
   
   <div class="form-actions">
     <%= f.button :submit, "Update", class: "btn btn-primary" %>

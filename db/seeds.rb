@@ -10,13 +10,27 @@ User.destroy_all
 admin = User.create!(email: 'admin@example.com',
     password: 'password',
     password_confirmation: 'password', 
-    user_detail_attributes: { first_name: 'Test', last_name: 'Account', contact_number: 1111111111, address_line_1: '123', address_line_2: 'Wallaby Way', suburb: 'Brisbane', state: 'QLD', postcode: 4000 })
+    first_name: 'Test', 
+    last_name: 'Account', 
+    contact_number: '1111111111', 
+    address_line_1: '123', 
+    suburb: 'Brisbane', 
+    state: 'QLD', 
+    postcode: 4000
+)
 admin.add_role :admin
 
 user = User.create!(email: 'test@test.com',
     password: 'password',
     password_confirmation: 'password', 
-    user_detail_attributes: { first_name: 'Test', last_name: 'Account', contact_number: 1111111111, address_line_1: '123', address_line_2: 'Wallaby Way', suburb: 'Brisbane', state: 'QLD', postcode: 4000 })
+    first_name: 'Test', 
+    last_name: 'Account', 
+    contact_number: '1111111111', 
+    address_line_1: '123', 
+    suburb: 'Brisbane', 
+    state: 'QLD', 
+    postcode: 4000
+)
 
 
 

@@ -20,14 +20,13 @@
      
         <tr>
           <td><%= @profile.email%></td>
-          <td><%= @profile.user_detail.first_name%></td>
-          <td><%= @profile.user_detail.last_name%></td>
-          <td><%= @profile.user_detail.contact_number%></td>
-          <td><%= @profile.user_detail.address_line_1%></td>
-          <td><%= @profile.user_detail.address_line_2%></td>
-          <td><%= @profile.user_detail.suburb%></td>
-          <td><%= @profile.user_detail.state%></td>
-          <td><%= @profile.user_detail.postcode%></td>
+          <td><%= @profile.first_name%></td>
+          <td><%= @profile.last_name%></td>
+          <td><%= @profile.contact_number%></td>
+          <td><%= @profile.address_line%></td>
+          <td><%= @profile.suburb%></td>
+          <td><%= @profile.state%></td>
+          <td><%= @profile.postcode%></td>
 
           <td><%= link_to 'Edit', user_registration_path, method: :patch %></td>
           <td><%= link_to 'Destroy', '/users', method: :delete, data: { confirm: 'Are you sure?' } %></td>
