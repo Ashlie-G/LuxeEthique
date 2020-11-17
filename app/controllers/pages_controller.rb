@@ -6,7 +6,6 @@ class PagesController < ApplicationController
   end
 
   def profile
-    # @user = current_user
     @listing = current_user.product_listings
   end
 
@@ -25,10 +24,6 @@ class PagesController < ApplicationController
   end
 
 private
-
-# def set_user
-#   @user = User.find_by(params[:id])
-# end
 
 def check_user
   if (user_signed_in? && !current_user.has_role?(:admin))

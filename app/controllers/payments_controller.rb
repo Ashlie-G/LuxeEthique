@@ -13,6 +13,6 @@ class PaymentsController < ApplicationController
   end
 
   def cancel
-   
+    redirect_to root_url, notice: "Something went wrong."
   end
 end

@@ -12,6 +12,10 @@
   <body>
     <%= render 'partials/navbar' %>
     <div class="container">
+      <% if current_user %>
+       <%= "  Logged in as #{current_user.first_name} #{current_user.last_name}"%>
+      <%end%>
+      
       
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
