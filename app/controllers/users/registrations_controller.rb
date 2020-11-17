@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:update]
+  # before_action :configure_sign_up_params, only: [:update]
   #before_action :configure_account_update_params, only: [:update]
+  # before_action :set_user, only: [:update]
  
 
   # GET /resource/sign_up
@@ -22,16 +23,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   # def edit
   #   super
+  #   @user_details = current_user.user_detail
   # end
 
-  # PUT /resource
-  def update
-    super
-    @user_details.update(configure_sign_up_params)
-    redirect_to profile_path
-  end
-
-
+  # # PUT /resource
+  # def update
+  #   super
+  #   # @user_details.update(configure_sign_up_params)
+  #   # @user_details = User.find_by(params[:id])
+  #   # @user = current_user
+  #   @user_details = current_user.user_detail
+  #    @user_details.update(configure_account_update_params[:user_details])
+  #     redirect_to profile_path
+  # end
+  
 
   # DELETE /resource
   # def destroy
@@ -54,14 +59,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
    #devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
    params.require(:user).permit(:email, :password, :password_confirmation, user_details: [:first_name, :last_name, :contact_number, :address_line_1, :address_line_2, :suburb, :state, :postcode])
   end
+
+  # def set_user
+  # @user = User.find_by(params[:id])
+  # end
  
 
   
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   params.require(:user).permit(:email, :password, :password_confirmation, user_details: [:first_name, :last_name, :contact_number, :address_line_1, :address_line_2, :suburb, :state, :postcode])
+  #    params.require(:user_detail).permit(:first_name, :last_name, :contact_number, :address_line_1, :address_line_2, :suburb, :state, :postcode)
 
-  #   #devise_parameter_sanitizer.permit(:account_update, keys: [:user, :user_detail])
+  #   #devise_parameter_sanitizer.permit(:account_update, keys: [:user, :user_details])
   # end
 
   # The path used after sign up.

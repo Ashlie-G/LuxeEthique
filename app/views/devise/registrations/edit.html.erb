@@ -1,14 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -27,7 +18,7 @@
                   input_html: { autocomplete: "new-password" } %>          
     </div>
     <div>
-      <%= f.fields_for :user_details do |form| %>
+      <%= f.fields_for current_user.user_detail do |form| %>
         <%= form.input :first_name,
                       required: true,
                       autofocus: true,
@@ -63,13 +54,14 @@
       <% end %>
                                       
     </div>
-  <% end %>
-  </div>
-
+  
   <div class="form-actions">
     <%= f.button :submit, "Update", class: "btn btn-primary" %>
   </div>
-<% end %>
+  </div>
+  <% end %>
+
+
 
 <h3>Cancel my account</h3>
 
