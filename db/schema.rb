@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 2020_11_17_035026) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
-  create_table "postcodes", force: :cascade do |t|
-    t.integer "postcode"
-    t.bigint "user_detail_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_detail_id"], name: "index_postcodes_on_user_detail_id"
-  end
-
   create_table "product_listings", force: :cascade do |t|
     t.string "name"
     t.string "brand"
@@ -78,29 +70,6 @@ ActiveRecord::Schema.define(version: 2020_11_17_035026) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
-  end
-
-  create_table "states", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_detail_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_detail_id"], name: "index_states_on_user_detail_id"
-  end
-
-  create_table "user_details", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "contact_number"
-    t.string "address_line_1"
-    t.string "address_line_2"
-    t.string "suburb"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "state"
-    t.integer "postcode"
-    t.index ["user_id"], name: "index_user_details_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -133,8 +102,5 @@ ActiveRecord::Schema.define(version: 2020_11_17_035026) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "payments", "product_listings"
   add_foreign_key "payments", "users"
-  add_foreign_key "postcodes", "user_details"
   add_foreign_key "product_listings", "users"
-  add_foreign_key "states", "user_details"
-  add_foreign_key "user_details", "users"
 end

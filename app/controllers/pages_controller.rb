@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
-  # skip_before_action :verify_authenticity_token, only: [:profile]
   before_action :authenticate_user!, except: [:index, :about, :contact]
   before_action :check_user, only: [:admin]
-  # before_action :set_user, only: [:profile]
   
   def index
   end
@@ -18,7 +16,6 @@ class PagesController < ApplicationController
   def admin
     #eager loader method .includes on all users for user_details
     @user = User.all
-    #@product_listings = ProductListing.all
     @product_listings = ProductListing.paginate(page: params[:page])
     @orders = Payment.all
 

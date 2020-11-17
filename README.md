@@ -27,7 +27,9 @@ The purpose of this app is to create an reputable two way marketplace that allow
 
 #### Functionality / features ####
 Luxe Ethique enables any visitor to the application to read about the application on the about page, contact me via the contact page, or view the current approved listings aka the 'Wardrobe'. They are presented with a set amount of items displayed per page, and are able to navigate to the next or previous pages. If the visitor wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system that asks for email, password, contact number and address.
-If the visitor is a user, they can sign into their account with their email and password. Once signed in, they are able to access their user profile which allows them to see their current listings(if any) and edit their information. A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to destroy it. Users can also create a new listing by completing the form and uploading and image of the product as well as subit its proof of authenticity via email. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
+If the visitor is a user, they can sign into their account with their email and password. 
+Once signed in, they are able to access their user profile which allows them to see their current listings(if any) and edit their information. 
+A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to destroy it. Users can also create a new listing by completing the form and uploading and image of the product as well as subit its proof of authenticity via email. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
 The admin user has access to everything in the app from the admin dashboard. The dashboard features all the active listings, users and payments. From here, the admin user is able to view submitted listings and once product authenticity is confirmed, the admin user can approve it. Once the product listing is approved, it is featured in the shop.
 
 
@@ -83,9 +85,8 @@ An ERD for your app
 Explain the different high-level components (abstractions) in your app
 
 Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in relational database management systems. We can then easily store and request data without having to write specific SQL statements. This then provides our controller with the logic it needs in order to send information to the view.
-For the purposes of the application, a user, user details, product listing and payment model with controllers were constructed. The models for Rolify and Cancancan are generated when integrating their features.
+For the purposes of the application, a user, product listing and payment model with controllers were constructed. The models for Rolify and Cancancan are generated when integrating their features.
 The user model is also attached to devise, rolify and cancancan. These three gems work together to build a strong authentication and authorization system featuring their built in methods.
-The user details model has a relationship with the user in order to obtain the information in the database, but seperate the tables for data integrity.
 The product listing model enables the relationships between the user, product listing and payment models. The product listing controller allows for the logic to be presented in the views.
 Payments/ sales are tracked by the payments model and controller which allow the admin user to view a users purchases and track the recent sales within the application.
 
@@ -106,10 +107,8 @@ The User model is the central model that has relationships to the other models w
 User
 ```rolify```
 ```has_and_belongs_to_many :users, :join_table => :users_roles```
-```has_one :user_detail, dependent: :destroy```
 ```has_one :payment```
 ```has_many :product_listings, dependent: :destroy```
-```accepts_nested_attributes_for :user_details```
 The UserDetail model contains all the details for each user, their name, address and contact number to maintain data integrity.
 UserDetail
 ```belongs_to :user```
