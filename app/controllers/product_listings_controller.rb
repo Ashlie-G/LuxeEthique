@@ -1,38 +1,36 @@
 class ProductListingsController < ApplicationController
   #cancancan component that sets up before_filter which calls load_resource, authorize_resource and santizes product listing params
   # load_and_authorize_resource param_method: :product_listing_params
+ #ideally would not have this skip before action for buy, however the way stripe was implemented require this as the action controller throws an error. 
   skip_before_action :verify_authenticity_token, only: [:create, :buy]
+  # sets the product listing using private method the the specified pages
   before_action :set_product_listing, only: [:show, :edit, :update, :destroy, :buy]
+  # authenticates that the user is a registered user execpt when viewing the index page(shop)
   before_action :authenticate_user!, except: [:index]
+  # ensures that only users with an admin role can see specific content realting to product listings
   before_action :check_user, only: [:admin]
   
 
-  # GET /product_listings
-  # GET /product_listings.json
   #sets pagination(limits listings on each page) and shows current product listins
   def index
     @product_listings = ProductListing.paginate(page: params[:page])
   end
-
-  # GET /product_listings/1
-  # GET /product_listings/1.json
+# show action, before action sets the product listings, so no need to reference again in this action
   def show
-
   end
 
-  # GET /product_listings/new
+ 
   #creates new product listing
   def new
     @product_listing = ProductListing.new
   
   end
 
-  # GET /product_listings/1/edit
+# edit action, before action sets the product listings, so no need to reference again in this action  
   def edit
   end
 
-  # POST /product_listings
-  # POST /product_listings.json
+# action for user/admin creating a new listing
   def create
     @product_listing = ProductListing.new(product_listing_params)
     @product_listing.user = current_user
@@ -47,8 +45,7 @@ class ProductListingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /product_listings/1
-  # PATCH/PUT /product_listings/1.json
+# action when admin is updating a listing
   def update
     respond_to do |format|
       if @product_listing.update(product_listing_params)
@@ -61,8 +58,7 @@ class ProductListingsController < ApplicationController
     end
   end
 
-  # DELETE /product_listings/1
-  # DELETE /product_listings/1.json
+# action when user or admin deletes product listing
   def destroy
     @product_listing.destroy
     respond_to do |format|
@@ -71,8 +67,8 @@ class ProductListingsController < ApplicationController
     end
   end
 
+# action to run stripe on the product listings
   def buy
-    authorize! :read, @product_listings
     Stripe.api_key = ENV['STRIPE_API_KEY']
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
@@ -107,6 +103,7 @@ class ProductListingsController < ApplicationController
       params.require(:product_listing).permit(:name, :brand, :description, :price, :category, :colour, :approved, :image, :user_id)
     end
 
+# custom method to check if the user is signed in and has an admin role in order to access the admin page. Used for the before action at top of page.
     def check_user
       if (user_signed_in? && !current_user.has_role?(:admin))
         flash[:alert] = "You are not authorized to access that page"

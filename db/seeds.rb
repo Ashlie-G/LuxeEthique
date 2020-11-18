@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-admin = User.create!(email: 'admin@example.com',
-    password: 'password',
-    password_confirmation: 'password', 
+admin = User.create!(email: ENV["ADMIN_EMAIL"],
+    password: ENV["ADMIN_PASSWORD"],
+    password_confirmation: ENV["ADMIN_PASSWORD"], 
     first_name: 'Test', 
     last_name: 'Account', 
     contact_number: '1111111111', 
@@ -20,9 +20,9 @@ admin = User.create!(email: 'admin@example.com',
 )
 admin.add_role :admin
 
-user = User.create!(email: 'test@test.com',
-    password: 'password',
-    password_confirmation: 'password', 
+user = User.create!(email: ENV["USER_EMAIL"],
+    password: ENV["USER_PASSWORD"],
+    password_confirmation: ENV["USER_PASSWORD"], 
     first_name: 'Test', 
     last_name: 'Account', 
     contact_number: '1111111111', 
