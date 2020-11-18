@@ -37,7 +37,7 @@ insert sitemap png here
 - Screenshots
 insert screen shots here
 - Target audience
-The target audience for the application is anyone wanting to make more conscious decisions about their buying habits. Primarily people who have chosen a minimalist, plantbased or vegan lifestyle, however with the current climate, more people are looking for ethical alternatives.
+The target audience for the application is anyone wanting to make more conscious decisions about their buying habits. Primarily people who have chosen a minimalist, plant-based or vegan lifestyle, however with the current climate, more people are looking for ethical alternatives.
 
 - Tech stack (e.g. html, css, deployment platform, etc)
 Framework
@@ -82,15 +82,11 @@ Wireframes for your app
 An ERD for your app
 ### R19 ### string 255
 Provide your database schema design
-The schema design revolves around the User model as the app functionality is dependent on user actions. Within the schema, all other tables reference user for this reason. The user table attributes include, email(string), password(string), first name(string), last name(string), contact number(string), address(string), suburb(string), state(string) and postcode(integer). Majority of these attributes are strings as they do not require large descriptions. I chose to set the phone number as a string rather than an integer to allow to numbers of different lengths and prefixes. Postcode is set to an integer as this was appropriate for this attribute. When creating tables id's are automatically assigned, so in this case the user_id acts as the primary key which will be references as the foreign key in the other tables in which it has the relationships with.
-The product listing table features the user_id attribute with a value of bigint as a foreign key to establish its has_many relationship with the user table. The listing_id is the primary key set to be referenced as the foreign key. Its other attributes include name(string), brand(string), description(string), price(float), category(string), colour(string) and approved(boolean). Again most of the attributes are strings to apply character length constraints. As the description provides potential for more than the standard character amount in the string value, it is assigned the text value. Float was chosen as the value for price in order to account for the possible decimal place when dealing with currency. Finally a boolean value was applied to the approved attribute in order to control the availability of the product listing. If the product is approved for sale, the value of the product listing is true, if not, it is set to false.
-They payments table features both the user_id and product_listing_id as bigint values or foreign keys. they both have a has_one relationship with this table. Buyer email, seller email and amount are the other attributes used in the schema table. Again strings are used to constrain the character limit and the amount is set as float due to it being a currency value.
+The schema design revolves around the User model as the app functionality is dependent on user actions. Within the schema, all other tables reference user for this reason. The user table attributes include, email(string), password(string), first name(string), last name(string), contact number(string), address(string), suburb(string), state(string) and postcode(integer). Majority of these attributes are strings as they do not require more than 255 characters therefore constraining the character limit. I chose to set the phone number as a string rather than an integer to allow to numbers of different lengths and prefixes. Postcode is set to an integer as this was appropriate for this attribute. When creating tables id's are automatically assigned, so in this case the user_id acts as the primary key which will be referenced as the foreign key in the other tables in which it has the relationships with.
+The product listing table features the user_id as a foreign key with a value of bigint to establish its has_many relationship with the user table. The product_listing_id is the primary key set to be referenced as the foreign key. Its other attributes include name(string), brand(string), description(string), price(float), category(string), colour(string) and approved(boolean). Again most of the attributes are strings to apply character length constraints. As the description provides potential for more than the standard character amount in the string value(255), it is assigned the 'text' value. Float was chosen as the value for price in order to account for the possible decimal place when dealing with currency. Finally a boolean value was applied to the approved attribute in order to control the availability of the product listing. If the product is approved for sale, the value of the product listing is true, if not, it is set to false.
+They payments table features both the user_id and product_listing_id as bigint values or foreign keys. They both have a has_one relationship with this table. Buyer email(string), seller email(string) and amount(float) are the other attributes with values used in the schema table. Again strings are used to constrain the character limit and the amount is set as float due to it being a currency value.
 Rolify generates two tables also based off the user table. Roles has and belongs to many users through the user roles joining table. 
 
-
-
-
-keys attributes, constraints
 ### R15 ###
 Explain the different high-level components (abstractions) in your app
 
@@ -103,13 +99,13 @@ Payments/ sales are tracked by the payments model and controller which allow the
 
 ### R16 ###
 Detail any third party services that your app will use
-In terms of involvement from third party applications, Luxe Ethique utilizes Cloudinary for image hosting, Stripe for payment systems and Heroku for deployment.
+In terms of involvement from third party applications, Luxe Ethique utilizes Cloudinary for image hosting, Stripe for payment systems, Heroku for deployment and Formspree for the contact form functionality.
 - Cloudinary
-    - Cloudinary is a cloud based image and video service. It allows a user to upload, store and edit images or video for websites and applications. Luxe ethque uses it to facilitate the image upload for new and exisiting listings.
+    - Cloudinary is a cloud based image and video service. It allows a user to upload, store and edit images or video for websites and applications. Luxe ethque uses it to facilitate the image upload and storage for new and exisiting listings.
 - Stripe
-    - Stripe is a payment processing software for e-commerce websites and mobile applications. It will be imlpemented within the app for users to purchase products.
+    - Stripe is a payment processing software for e-commerce websites and mobile applications. It will be imlpemented within the app for users to purchase product listings.
 - Heroku
-    - Heroku is a cloud platform that allows developers to build and operate applications in the cloud. Heroku supports many computer languages and makes the deployment process seamless.
+    - Heroku is a cloud platform that allows developers to build and operate applications in the cloud. Heroku supports many computer languages and makes the deployment process seamless. The app will be deployed with Heroku due to its simple deployment process, its compatability with Rails and PostgreSQL and integration of ENV file secret keys.
 - Formspree
     - Formspree is a form backend API and email service used for HTML forms. This service provided the action and inputs for the contact form to send the request straight the the Luxe Ethique email account.
 
@@ -121,25 +117,25 @@ User
 ```has_and_belongs_to_many :users, :join_table => :users_roles```
 ```has_one :payment```
 ```has_many :product_listings, dependent: :destroy```
-As the user model was used to implement Rolify, the rolify joining table relationship is created automatically.
-A user id must be attached to every payment as both buyer and seller, but only one payment can be occuring at a time.
+As the user model was used to implement Rolify, the Rolify joining table relationship is created automatically.
+A user id must be attached to every payment as both buyer and seller, but only one payment can occur at a time.
 A user can have as many listings as they like on the application, so the has_many relationship is established between the user and the product listings.
 The ProductListing model is responsible for the management of each product listed.
 ProductListing
 ```belongs_to :user```
 ```has_one :payment```
 ```has_one_attached :image```
-The product listing belongs to the user, establishing the realtionship and foreign key. A product listing can only have one payment as there will only ever be one item per listing. Each product listing must have an image attached in order to be transparent to buyers, so the has one attached realtionship is established.
+The product listing belongs to the user, establishing the relationship referencing the user as a foreign key. A product listing can only have one payment as there will only ever be one item per listing. Each product listing must have an image attached in order to be transparent to buyers, so the has one attached relationship is established.
 When each product listing is bought, the payment must be tracked. The Payment model captures this information.
 ```belongs_to :user```
 ```belongs_to :product_listing```
-The payment model also belongs to the user as well as the product listing. These forign keys establish the realtionship and enable payments to be attached to the user buying, the user selling and the product listing itself.
+The payment model also belongs to the user as well as the product listing. These foreign keys establish the relationship and enable payments to be attached to the user buying, the user selling and the product listing itself.
 
 
 ### R18 ###
 Discuss the database relations to be implemented in your application
 
-The order in which data tables are created is vital when working with Rails to correctly construct relationships and keep with convention. To create these connections, I will utilize foreign keys, which link one table to another. 
+The order in which data tables are created is vital when working with Rails to correctly construct relationships and keep with convention. To create these connections, I will utilize primary and foreign keys, which link one table to another. 
 As the User is the central data table within my application, this model will created first. 
 
 In order to establish the roles of each user, Rolify was implemented on the user model. This created two more data tables to enable users to be assigned roles creating a has_many_and_belongs_to relationship between users and user roles. This is done automatically with Rolify.
@@ -163,10 +159,10 @@ Log
 - Thursday 5th
     - Finalised base ERD, will need user, user details, state, postcode, product listing, order, order details. Rolify will implement role model so wont need to manually generate that.
     - Compiled base list of user stories
-    - Gem list includes bootstrap, devise, rolify, active admin (hopefully), simple form, cloudinary and stripe.
+    - Gem list includes bootstrap, Devise, Rolify, active admin (hopefully), simple form, Cloudinary and stripe.
     - developed wireframes for landing page, admin platform and product listings.
 - Friday 6th
-    - created new rails app, setup postgresql database, set route route, started git repo and deployed to heroku.
+    - created new rails app, setup PostgreSQL database, set route route, started git repo and deployed to heroku.
     - created pages controller for all base app pages (home, about, contact, profile)
     - created user, userdetail, state, postcode and productlisting models with appropriate relationships to user.
     - implemented devise to user model which set up registration processes.

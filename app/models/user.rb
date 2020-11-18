@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   rolify
-  has_one :payment
+  has_one :payment, dependent: :destroy
   has_many :product_listings, dependent: :destroy
   validates :first_name, :last_name, :contact_number, :address, :suburb, :state, :postcode,  presence: true
 

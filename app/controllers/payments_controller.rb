@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
 # finding the correct product listing my the id, assigning the buyer to the 
 # current user, creating a new sale and then making the item unapproved by changing the boolean value from true to false.
   def success
-    # using find_by as only looking for a sinlge record
+    # using find_by to find first result that matches the conditions(params with correct ID)
     @product_listing = ProductListing.find_by(params[:id])
     @buyer = current_user
     @sale = Payment.create(user_id: @buyer.id, buyer_email: @buyer.email, seller_email: @product_listing.user.email, product_listing_id: @product_listing.id, amount: @product_listing.price)
