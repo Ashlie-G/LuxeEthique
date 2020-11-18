@@ -8,7 +8,7 @@ As a vegan who loves luxury handbags, I and many others struggle with our morals
 ### R8 ###
 * Why is it a problem that needs solving? *
 
-As more people are trying to be more conscious about their buying choices, there needs to be a platform that can facilitate and encourage this. I hope to build a trustworthy platform that can encourage ethical buying.
+As more people are trying to be more conscious about their buying choices and the environment, there needs to be a platform that can facilitate and encourage this. I hope to build a trustworthy platform that can encourage ethical buying.
 
 ### R9 ###
 ## Links ##
@@ -29,16 +29,15 @@ The purpose of this app is to create an reputable two way marketplace that allow
 Luxe Ethique enables any visitor to the application to read about the application on the about page, contact me via the contact page, or view the current approved listings aka the 'Wardrobe'. They are presented with a set amount of items displayed per page, and are able to navigate to the next or previous pages. If the visitor wants to know more about the item or purchase, they will need to sign up. The application has a fully functional user registration system that asks for email, password, contact number and address.
 If the visitor is a user, they can sign into their account with their email and password. 
 Once signed in, they are able to access their user profile which allows them to see their current listings(if any) and edit their information. 
-A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to destroy it. Users can also create a new listing by completing the form and uploading and image of the product as well as subit its proof of authenticity via email. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
-The admin user has access to everything in the app from the admin dashboard. The dashboard features all the active listings, users and payments. From here, the admin user is able to view submitted listings and once product authenticity is confirmed, the admin user can approve it. Once the product listing is approved, it is featured in the shop.
-
+A user can browse the current listings, view particular listings and purchase. If the listing belongs to the user, it will state it within the listing and they will be able to destroy it. Users can also create a new listing by completing the form and uploading and image of the product as well as submit its proof of authenticity via email. Once all the appropriate fields have been entered and the listing has been submitted, the user awaits for the admin approval before it appears on the site.
+The admin user has access to everything in the app from the admin dashboard. The dashboard features all the active listings, users and pending sales. From here, the admin user is able to view submitted listings and once product authenticity is confirmed, the admin user can approve it. Once the product listing is approved, it is featured in the shop.
 
 - Sitemap
 insert sitemap png here
 - Screenshots
 insert screen shots here
 - Target audience
-The target audience for the application is anyone wanting to make more conscious decisions about their buying habits when it comes to luxury items. Primarily people who have chosen and plantbased or vegan lifestyle, however with the current climate, more people are looking for ethical alternatives.
+The target audience for the application is anyone wanting to make more conscious decisions about their buying habits. Primarily people who have chosen a minimalist, plantbased or vegan lifestyle, however with the current climate, more people are looking for ethical alternatives.
 
 - Tech stack (e.g. html, css, deployment platform, etc)
 Framework
@@ -56,6 +55,8 @@ Payment System
 - Stripe
 Deployment
 - Heroku
+Gems
+- Simple Form, Dotenv and will_paginate
 
 ### R12 ###
 User stories for Luxe Ethique
@@ -64,17 +65,15 @@ User stories for Luxe Ethique
 - Visitors can view the 'Contact' page and submit and enquiry email.
 - If visitors would like to get more detail about a product, they will need to sign up to become a user.
 - Visitors are able to sign up with a form submitting their email, password, contact number and address.
-- Users have a profile with name address and phone number to attach their details to their account.
-- Users can update their profile and view their current listings.
-- Users can delete their profile.
-- Users can browse the wardrobe of luxury handbags for sale
-- Users can purchase a product listing through stripe
-- Users can submit their authentic handbags that they wish to sell with images.
+- Users can view their current listings.
 - Users can delete their listings.
+- Users can browse the wardrobe of luxury handbags for sale and are notified if a listing is theirs.
+- Users can purchase a product listing.
+- Users can submit their authentic handbags that they wish to sell with images.
 - Administrators can view and approve listing pending for sale.
 - Administrators can edit or destroy any listing.
 - Administrators can view all current listings and all users.
-- Administrators can view all product listings bought
+- Administrators can view all product listings bought.
 
 
 ### R13 ###
@@ -83,7 +82,13 @@ Wireframes for your app
 An ERD for your app
 ### R19 ###
 Provide your database schema design
-The schema design revolves around the User model as the app functionality is dependent on user actions. Within the schema, all other tables reference user for this reason
+The schema design revolves around the User model as the app functionality is dependent on user actions. Within the schema, all other tables reference user for this reason. The user table attributes include, email(string), password(string), first name(string), last name(string), contact number(string), address(string), suburb(string), state(string) and postcode(integer). Majority of these attributes are strings as they do not require large descriptions. I chose to set the phone number as a string rather than an integer to allow to numbers of different lengths and prefixes. Postcode is set to an integer as this was appropriate for this attribute. When creating tables id's are automatically assigned, so in this case the user_id acts as the primary key which will be references as the foreign key in the other tables in which it has the relationships with.
+The product listing table features the user_id attribute with a value of bigint as a foreign key to establish its has_many relationship with the user table. The listing_id is the primary key set to be referenced as the foreign key. Its other attributes include name(string), brand(string), description(string), price(float), category(string), colour(string) and approved(boolean). Again most of the attributes are strings to apply character length constraints. As the description provides potential for more than the standard character amount in the string value, it is assigned the text value. Float was chosen as the value for price in order to account for the possible decimal place when dealing with currency. Finally a boolean value was applied to the approved attribute in order to control the availability of the product listing. If the product is approved for sale, the value of the product listing is true, if not, it is set to false.
+They payments table features both the user_id and product_listing_id as bigint values or foreign keys. they both have a has_one relationship with this table. Buyer email, seller email and amount are the other attributes used in the schema table. Again strings are used to constrain the character limit and the amount is set as float due to it being a currency value.
+Rolify generates two tables also based off the user table. Roles has and belongs to many users through the user roles joining table. 
+
+
+
 
 keys attributes, constraints
 ### R15 ###
@@ -91,7 +96,7 @@ Explain the different high-level components (abstractions) in your app
 
 Rails Active Record is the model aspect of 'MVC' (Model, View and Controller). It is the system that is responsible for our ability to apply data and logic to our application (Rails Guides). This high level component allows us to create our data tables, use the data and store it within the database. The Active Record Pattern also enables Object Relational Mapping (ORM) (Rails Guides). This technique connects the objects to the tables in relational database management systems. We can then easily store and request data without having to write specific SQL statements. This then provides our controller with the logic it needs in order to send information to the view.
 For the purposes of the application, a user, product listing and payment model with controllers were constructed. The models for Rolify and Cancancan are generated when integrating their features.
-The user model is also attached to devise, rolify and cancancan. These three gems work together to build a strong authentication and authorization system featuring their built in methods.
+The user model is also attached to Devise, Rolify and Cancancan. These three gems work together to build a strong authentication and authorization system featuring their built in methods.
 The product listing model enables the relationships between the user, product listing and payment models. The product listing controller allows for the logic to be presented in the views.
 Payments/ sales are tracked by the payments model and controller which allow the admin user to view a users purchases and track the recent sales within the application.
 
@@ -116,7 +121,7 @@ User
 ```has_and_belongs_to_many :users, :join_table => :users_roles```
 ```has_one :payment```
 ```has_many :product_listings, dependent: :destroy```
-As the user model was used to implement Rolify, the rolify joining table is created automatically.
+As the user model was used to implement Rolify, the rolify joining table relationship is created automatically.
 A user id must be attached to every payment as both buyer and seller, but only one payment can be occuring at a time.
 A user can have as many listings as they like on the application, so the has_many relationship is established between the user and the product listings.
 The ProductListing model is responsible for the management of each product listed.
@@ -209,7 +214,10 @@ Log
     - still unable to edit the user profile, so also removed tha ability and just set a 'my listings' page.
     - added ability for only admin to see admin link
     - added feature that the owner of a listing can't see the buy button
-
+- Wednesday 18th
+    - Finalized slide deck and presented app
+    - Realised that the approved boolean value was now not changing to false when sucess action run, so spent time on determining the issue with no result.
+    - completed more content for documentation.
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
 Link to trello
