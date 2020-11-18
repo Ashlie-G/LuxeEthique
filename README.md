@@ -81,6 +81,11 @@ User stories for Luxe Ethique
 Wireframes for your app
 ### R14 ###
 An ERD for your app
+### R19 ###
+Provide your database schema design
+The schema design revolves around the User model as the app functionality is dependent on user actions. Within the schema, all other tables reference user for this reason
+
+keys attributes, constraints
 ### R15 ###
 Explain the different high-level components (abstractions) in your app
 
@@ -134,12 +139,10 @@ As the User is the central data table within my application, this model will cre
 
 In order to establish the roles of each user, Rolify was implemented on the user model. This created two more data tables to enable users to be assigned roles creating a has_many_and_belongs_to relationship between users and user roles. This is done automatically with Rolify.
 The next data table that needed to be created was the product listing. This model includes product details such as name and price, as well as a boolean value of 'approved' so the admin has control over the listing. To establish the relationship with the user, the foreign key was enabled using user:references as the last attribute. Each user has a has_many relationship with the product listings data table to create the ability for each user to list as many items as needed. One of the data fields that needs to be filled for the product listing is an image field. This relationship is established through the has_one_attached component.
-The final table to be constructed was the payments table in order to track all sales of product listings. The model has a realtionship with both the user and product listings model.
+The final table to be constructed was the payments table in order to track all sales of product listings. The model has a relationship with both the user and product listings model.
 MENTION USER DETAILS/STATE AND POSTCODE ISSUES??
 With thes relationships established between the data tables, the application is able to function as planned.
 
-### R19 ###
-Provide your database schema design
 
 ### R20 ###
 Describe the way tasks are allocated and tracked in your project
