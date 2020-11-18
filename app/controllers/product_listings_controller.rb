@@ -94,6 +94,7 @@ class ProductListingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    # using find as only looking for single record by id
     def set_product_listing
       @product_listing = ProductListing.find(params[:id])
     end

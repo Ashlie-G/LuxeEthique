@@ -15,8 +15,7 @@ class PagesController < ApplicationController
   end
 # making all users, product listings and sales available for the admin dashboard, pagination used for product listings so limit is set
   def admin
-    #eager loader method .includes on all users for user_details
-    @user = User.all
+    @users = User.all
     @product_listings = ProductListing.paginate(page: params[:page])
     @sales = Payment.all
 
