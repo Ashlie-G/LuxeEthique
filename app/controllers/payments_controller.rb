@@ -9,8 +9,13 @@ class PaymentsController < ApplicationController
     @product_listing = ProductListing.find_by(params[:id])
     @buyer = current_user
     @sale = Payment.create(user_id: @buyer.id, buyer_email: @buyer.email, seller_email: @product_listing.user.email, product_listing_id: @product_listing.id, amount: @product_listing.price)
-    @product_listing.update_attribute(:approved, false)
+    # @product_listing.update_attribute(:approved, false)
    
+    @product_listing.approved = false
+    @product_listing.save
+    # change = ProductListing.find_by(params[:id])
+    # change.update(approved: false)
+    # change.save
 
   end
 # action to run if payment unsuccessful

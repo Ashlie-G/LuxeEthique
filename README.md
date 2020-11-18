@@ -80,7 +80,7 @@ User stories for Luxe Ethique
 Wireframes for your app
 ### R14 ###
 An ERD for your app
-### R19 ###
+### R19 ### string 255
 Provide your database schema design
 The schema design revolves around the User model as the app functionality is dependent on user actions. Within the schema, all other tables reference user for this reason. The user table attributes include, email(string), password(string), first name(string), last name(string), contact number(string), address(string), suburb(string), state(string) and postcode(integer). Majority of these attributes are strings as they do not require large descriptions. I chose to set the phone number as a string rather than an integer to allow to numbers of different lengths and prefixes. Postcode is set to an integer as this was appropriate for this attribute. When creating tables id's are automatically assigned, so in this case the user_id acts as the primary key which will be references as the foreign key in the other tables in which it has the relationships with.
 The product listing table features the user_id attribute with a value of bigint as a foreign key to establish its has_many relationship with the user table. The listing_id is the primary key set to be referenced as the foreign key. Its other attributes include name(string), brand(string), description(string), price(float), category(string), colour(string) and approved(boolean). Again most of the attributes are strings to apply character length constraints. As the description provides potential for more than the standard character amount in the string value, it is assigned the text value. Float was chosen as the value for price in order to account for the possible decimal place when dealing with currency. Finally a boolean value was applied to the approved attribute in order to control the availability of the product listing. If the product is approved for sale, the value of the product listing is true, if not, it is set to false.
@@ -217,6 +217,7 @@ Log
 - Wednesday 18th
     - Finalized slide deck and presented app
     - Realised that the approved boolean value was now not changing to false when sucess action run, so spent time on determining the issue with no result.
+    - added seed users to env
     - completed more content for documentation.
 Please see the following screen shots for clarification.
 INSERT TRELLO SCREEN SHOTS HERE
