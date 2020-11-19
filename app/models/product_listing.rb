@@ -1,7 +1,7 @@
 class ProductListing < ApplicationRecord
   belongs_to :user
   has_one_attached :image, dependent: :purge
-  has_one :payment, dependent: :destroy
+  has_one :payment, dependent: :nullify
   validates :name, :brand, :description, :category, :colour, :image,  presence: true
   validates :description, length: { maximum: 500, too_long: "#{count} characters is the maximum allowed"}, presence: true
   validates :price, numericality: 
