@@ -6,13 +6,12 @@ class PaymentsController < ApplicationController
 # current user, creating a new sale and then making the item unapproved by changing the boolean value from true to false.
   def success
     # using find_by to find first result that matches the conditions(params with correct ID)
-    @product_listing = ProductListing.find_by(params[:id])
-    @buyer = current_user
-    @sale = Payment.create(user_id: @buyer.id, buyer_email: @buyer.email, seller_email: @product_listing.user.email, product_listing_id: @product_listing.id, amount: @product_listing.price)
+    @product_listing = ProductListing.find(params["eventId"])
+    @sale = Payment.create(user_id: current_user.id, buyer_email: current_user.email, seller_email: @product_listing.user.email, product_listing_id: @product_listing.id, amount: @product_listing.price)
     # @product_listing.update_attribute(:approved, false)
    
     @product_listing.approved = false
-    @product_listing.save
+    @product_listing.save!
     # change = ProductListing.find_by(params[:id])
     # change.update(approved: false)
     # change.save
@@ -22,4 +21,5 @@ class PaymentsController < ApplicationController
   def cancel
     redirect_to root_url, notice: "Something went wrong."
   end
+
 end
