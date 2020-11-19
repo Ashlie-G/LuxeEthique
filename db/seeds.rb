@@ -52,7 +52,7 @@ bag_2 = ProductListing.new(name: "Chanel Classic",
     price: 1900.0, 
     category: "Shoulder Bag", 
     colour: "White",
-    approved: false,
+    approved: true,
     user_id: admin.id
 )
     bag_2.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Chanel_Classic.jpg')), filename: 'Chanel_Classic.jpg')

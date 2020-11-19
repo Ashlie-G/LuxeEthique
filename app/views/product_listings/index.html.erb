@@ -4,42 +4,39 @@
 
 <div class="row">
   <% @product_listings.each do |product_listing| %>
-    
-        <% if product_listing.approved == true  %>
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <%= cl_image_tag(product_listing.image.key, crop: :scale, width: 280, cloud_name: 'ashlii')%>
-            <h5 class="card-title">
-              <p></p>
-                <strong>Name:</strong>
-                <%= product_listing.name %>
-              </p>
-              <p>
-                <strong>Brand:</strong>
-                <%= product_listing.brand %>
-              </p></h5>
-            <p class="card-text">
-              <p>
-                <strong>Price:</strong>
-                $<%= product_listing.price %>
-              </p>
-          
-              <p>
-                <strong>Category:</strong>
-                <%= product_listing.category %>
-              </p>
-
-              <p>
-                <strong>Colour:</strong>
-                <%= product_listing.colour %>
-              </p>
-          <%= link_to 'Show', product_listing, class: "btn btn-primary btn-lg" %>
-        </div>
-      </div>
-
-        <%end%>
-    
+    <% if product_listing.approved == true  %>
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <%= cl_image_tag(product_listing.image.key, crop: :scale, width: 280, cloud_name: 'ashlii')%>
+        <h5 class="card-title">
+          <p></p>
+            <strong>Name:</strong>
+            <%= product_listing.name %>
+          </p>
+          <p>
+            <strong>Brand:</strong>
+            <%= product_listing.brand %>
+          </p></h5>
+        <p class="card-text">
+          <p>
+            <strong>Price:</strong>
+            $<%= product_listing.price %>
+          </p>
       
+          <p>
+            <strong>Category:</strong>
+            <%= product_listing.category %>
+          </p>
+
+          <p>
+            <strong>Colour:</strong>
+            <%= product_listing.colour %>
+          </p>
+      <%= link_to 'Show', product_listing, class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+
+        <%end%> 
   <%end%>
 
 </div>
