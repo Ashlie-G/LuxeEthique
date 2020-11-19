@@ -10,7 +10,7 @@ User.destroy_all
 admin = User.create!(email: ENV["ADMIN_EMAIL"],
     password: ENV["ADMIN_PASSWORD"],
     password_confirmation: ENV["ADMIN_PASSWORD"], 
-    first_name: 'Test', 
+    first_name: 'Admin', 
     last_name: 'Account', 
     contact_number: '1111111111', 
     address: '42 Wallaby Way', 

@@ -53,10 +53,7 @@
         <th colspan="3"></th>
       </tr>
     </thead>
-  
     <tbody>
-
-
       <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
@@ -68,10 +65,8 @@
           <td><%= user.suburb %></td>
           <td><%= user.state %></td>
           <td><%= user.postcode %></td>
-          <td><%= link_to 'Destroy', '/users', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
-      
     </tbody>
   </table>
 
@@ -98,8 +93,6 @@
         <td><%= sale.amount %></td>
       </tr>
     <% end %>
-
-
     </tbody>
   </table>
 
