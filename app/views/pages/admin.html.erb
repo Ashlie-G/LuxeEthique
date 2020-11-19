@@ -57,17 +57,17 @@
     <tbody>
 
 
-      <% @users.each do |u| %>
+      <% @users.each do |user| %>
         <tr>
-          <td><%= u.id %></td>
-          <td><%= u.email %></td>
-          <td><%= u.first_name %></td>
-          <td><%= u.last_name %></td>
-          <td><%= u.contact_number %></td>
-          <td><%= u.address %></td>
-          <td><%= u.suburb %></td>
-          <td><%= u.state %></td>
-          <td><%= u.postcode %></td>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.contact_number %></td>
+          <td><%= user.address %></td>
+          <td><%= user.suburb %></td>
+          <td><%= user.state %></td>
+          <td><%= user.postcode %></td>
           <td><%= link_to 'Destroy', '/users', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

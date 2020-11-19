@@ -43,6 +43,8 @@
                   input_html: { autocomplete: "State" }%>
     <%= f.input :postcode,
                   required: true,
+                  maxlength: true,
+                  maxlength: 4,
                   autofocus: true,
                   input_html: { autocomplete: "Postcode" }%>                                 
   </div>
