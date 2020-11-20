@@ -31,6 +31,7 @@ class ProductListingsController < ApplicationController
   end
 
 # action for user/admin creating a new listing
+#built with scaffold
   def create
     @product_listing = ProductListing.new(product_listing_params)
     @product_listing.user = current_user
@@ -46,6 +47,7 @@ class ProductListingsController < ApplicationController
   end
 
 # action when admin is updating a listing
+#built with scaffold
   def update
     respond_to do |format|
       if @product_listing.update(product_listing_params)
@@ -59,6 +61,7 @@ class ProductListingsController < ApplicationController
   end
 
 # action when user or admin deletes product listing
+#built with scaffold
   def destroy
     @product_listing.destroy
     respond_to do |format|
